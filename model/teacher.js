@@ -12,18 +12,23 @@ Teacher.init({
         allowNull : false
     },
 
-    name : {
+    firstName : {
+        type : DataTypes.STRING,
+        allowNull : false
+    },
+
+    lastName : {
         type : DataTypes.STRING,
         allowNull : false
     },
 
     gender : {
-        type : DataTypes.STRING,
+        type : DataTypes.ENUM('Male','Female'),
         allowNull : false
     },
 
     class : {
-        type : DataTypes.STRING,
+        type : DataTypes.ENUM('Jss1', 'Jss2', 'Jss3', 'Ss1', 'Ss2', 'Ss3'),
         allowNull : false
     },
 
@@ -37,9 +42,12 @@ Teacher.init({
         allowNull : false
     },
 
-    date_of_birth : {
+    dateOfBirth : {
         type : DataTypes.DATEONLY,
-        allowNull : false
+        allowNull : false,
+        validate : {
+            isDate : true
+        }
     },
 
     phone : {
@@ -56,4 +64,5 @@ Teacher.init({
     updatedAt : true
 })
 sequelize.sync()
+
 module.exports = { Teacher }

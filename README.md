@@ -28,7 +28,7 @@ This is a School-Mangement API built with Nodejs + express js
 - supertest & mocha - packages used for testing
 - jsonwebtoken - the package used  for creation and verification of jwt token
 - nodemailer - the package used to send emails
-- cloudinary - the cloud storage use for storing file
+- cloudinary - the cloud storage used for file upload
 
 
 

@@ -13,7 +13,7 @@ AdminProfile.init({
         allowNull : false
     },
 
-    school_name : {
+    schoolName : {
         type : DataTypes.STRING,
         allowNull : false
     },
@@ -49,6 +49,6 @@ AdminProfile.init({
     createdAt : true,
     updatedAt : true
 })
-
 sequelize.sync()
+
 module.exports = { AdminProfile }

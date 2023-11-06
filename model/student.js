@@ -17,16 +17,16 @@ Student.init({
     },
 
     gender : {
-        type : DataTypes.STRING,
+        type : DataTypes.ENUM('Male','Female'),
         allowNull : false
     },
 
     class : {
-        type : DataTypes.STRING,
+        type : DataTypes.ENUM('Jss1', 'Jss2', 'Jss3', 'Ss1', 'Ss2', 'Ss3'),
         allowNull : false,
     },
 
-    date_of_birth : {
+    dateOfBirth : {
         type : DataTypes.DATEONLY,
         allowNull : false,
         validate : {
@@ -34,7 +34,7 @@ Student.init({
         }
     },
 
-    blood_group : {
+    bloodGroup : {
         type : DataTypes.STRING,
         allowNull : false
     },
@@ -44,14 +44,20 @@ Student.init({
         allowNull : false
     },
 
-    admission_date : {
+    admissionDate : {
         type : DataTypes.DATEONLY,
-        allowNull : false
+        allowNull : false,
+        validate : {
+            isDate : true
+        }
     },
 
-    image_url : {
+    imageUrl : {
         type : DataTypes.STRING,
-        allowNull : false
+        allowNull : false,
+        validate : {
+            isUrl : true
+        }
     }
 }, {
     sequelize,

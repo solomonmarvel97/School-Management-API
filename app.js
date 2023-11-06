@@ -5,6 +5,13 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 var baseRouter = require('./routes/index');
+const authRouter = require('./routes/auth')
+const parentRouter = require('./routes/parent')
+const studentRouter = require('./routes/student')
+const subjectRouter = require('./routes/subject')
+const teacherRouter = require('./routes/teacher')
+
+
 var { dbConnection } = require('./config/db.config')
 // var usersRouter = require('./routes/users');
 
@@ -33,7 +40,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 
-app.use('/', baseRouter);
+app.use('/', baseRouter, authRouter, parentRouter, studentRouter, subjectRouter, teacherRouter);
 // app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler

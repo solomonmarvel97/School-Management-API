@@ -2,10 +2,9 @@ require('dotenv').config()
 const { Sequelize, Model, DataTypes } = require('sequelize')
 const sequelize = new Sequelize(`postgres://${process.env.POSTGRES_USER}:${process.env.POSTGRES_PASSWORD}@${process.env.POSTGRES_HOST}:${process.env.POSTGRES_PORT}/${process.env.POSTGRES_DB}`,{ logging : false})
 
+class StudentPromotion extends Model { }
 
-class FeesGroup extends Model { }
-
-FeesGroup.init({
+StudentPromotion.init({
     id : {
         type : DataTypes.BIGINT,
         autoIncrement : true,
@@ -13,26 +12,29 @@ FeesGroup.init({
         allowNull : false
     },
 
-    name : {
-        type : DataTypes.STRING,
+    currentClass : {
+        type : DataTypes.ENUM('Jss1', 'Jss2', 'Jss3', 'Ss1', 'Ss2', 'Ss3'),
         allowNull : false
+
     },
 
-    feesType : {
-        type : DataTypes.STRING,
+    promotionFromClass : {
+        type : DataTypes.ENUM('Jss1', 'Jss2', 'Jss3', 'Ss1', 'Ss2', 'Ss3'),
         allowNull : false
+        
     },
 
-    description : {
-        type : DataTypes.STRING,
+    promotionToClass : {
+        type : DataTypes.ENUM('Jss1', 'Jss2', 'Jss3', 'Ss1', 'Ss2', 'Ss3'),
         allowNull : false
+
     }
 }, {
     sequelize,
-    modelName : 'feesgroup',
+    modelName : 'studentpromotion',
     createdAt : true,
     updatedAt : true
 })
 sequelize.sync()
 
-module.exports = { FeesGroup }
+module.exports = { StudentPromotion }

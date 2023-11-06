@@ -1,6 +1,7 @@
+require('dotenv').config()
 const { Sequelize, Model, DataTypes } = require('sequelize')
 const sequelize = new Sequelize(`postgres://${process.env.POSTGRES_USER}:${process.env.POSTGRES_PASSWORD}@${process.env.POSTGRES_HOST}:${process.env.POSTGRES_PORT}/${process.env.POSTGRES_DB}`,{ logging : false})
-require('dotenv').config()
+
 
 class Parent extends Model { }
 
@@ -12,12 +13,12 @@ Parent.init({
         allowNull :false
     },
 
-    father_name : {
+    fatherName : {
         type : DataTypes.STRING,
         allowNull : false
     },
 
-    mother_name : {
+    motherName : {
         type : DataTypes.STRING,
         allowNull : false
     },
@@ -38,7 +39,7 @@ Parent.init({
         }
     },
 
-    father_occupation : {
+    fatherOccupation : {
         type : DataTypes.STRING,
         allowNull :false
     },
@@ -49,7 +50,7 @@ Parent.init({
     },
 
     religion : {
-        type : DataTypes.STRING,
+        type : DataTypes.ENUM('Christain','Muslim'),
         allowNull : false
     }
 }, {
@@ -59,4 +60,5 @@ Parent.init({
     updatedAt : true
 })
 sequelize.sync()
+
 module.exports = { Parent }

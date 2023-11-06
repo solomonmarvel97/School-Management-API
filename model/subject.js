@@ -17,7 +17,7 @@ Subject.init({
         allowNull : false
     },
 
-    teacher_name : {
+    teacherName : {
         type : DataTypes.STRING,
         allowNull : false
     },
@@ -29,7 +29,10 @@ Subject.init({
 
     days : {
         type : DataTypes.DATEONLY,
-        allowNull : false
+        allowNull : false,
+        validate : {
+            isDate : true
+        }
     }
 }, {
     sequelize,
@@ -38,4 +41,5 @@ Subject.init({
     updatedAt : true
 })
 sequelize.sync()
+
 module.exports = { Subject }
