@@ -1,4 +1,4 @@
-const { Op } = require('sequelize')
+const { Op, Sequelize } = require('sequelize')
 const { db } = require('../model/index')
 
 class StudentService {
@@ -21,6 +21,15 @@ class StudentService {
             const result = await this.model.findAll()
             return result
         } catch (err) {
+            throw err
+        }
+    }
+
+    async getStudentCount(){
+        try{
+            const result = await this.model.count()
+            return result
+        }catch(err){
             throw err
         }
     }

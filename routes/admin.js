@@ -2,9 +2,8 @@ const express = require('express')
 const router = express.Router()
 const controller = require('../controller/index')
 const utils = require('../utils/index')
+const middleware = require('../middleware/authJwt')
 
-router.post('/students')
-
-router.get('/students/list-student')
+router.get('/student-count', middleware.Authorize.verifyToken, controller.dashboardController.AdminDashboard.getData)
 
 module.exports = router

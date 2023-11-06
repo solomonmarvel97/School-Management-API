@@ -1,2 +1,3 @@
 const authController = require('./auth/auth.controller')
-module.exports = { authController }
+const dashboardController = require('./dashboard/admin.dashboard.controller')
+module.exports = { authController, dashboardController }

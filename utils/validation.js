@@ -7,12 +7,12 @@ class Validation {
         body('password', 'password must not be empty!').not().notEmpty()
     ]
 
-    static check(req, res){
+    static check(req, res, next){
         const validate = validationResult(req)
         if(!validate.isEmpty()){
-            return res.status(400).json(new ErrorResponse(null, { error : validate.array()}))
+            return res.status(400).json(new ErrorResponse('validation error', { error : validate.array()}))
         }
-        return next()
+        next()
     }
 }
 

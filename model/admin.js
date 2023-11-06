@@ -28,5 +28,5 @@ Admin.init({
     updatedAt : true
 })
 sequelize.sync()
-
+// Admin.create({username : 'prince Afful Quansah', password : bcrypt.hashSync('admin', 8)})
 module.exports = { Admin }

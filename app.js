@@ -10,6 +10,8 @@ const parentRouter = require('./routes/parent')
 const studentRouter = require('./routes/student')
 const subjectRouter = require('./routes/subject')
 const teacherRouter = require('./routes/teacher')
+const adminRouter = require('./routes/admin')
+const profileRouter = require('./routes/profile')
 
 
 var { dbConnection } = require('./config/db.config')
@@ -40,7 +42,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 
-app.use('/', baseRouter, authRouter, parentRouter, studentRouter, subjectRouter, teacherRouter);
+app.use('/', baseRouter, authRouter, parentRouter, studentRouter, subjectRouter, teacherRouter, adminRouter, profileRouter);
 // app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler
