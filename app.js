@@ -5,7 +5,24 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 var baseRouter = require('./routes/index');
+var { dbConnection } = require('./config/db.config')
 // var usersRouter = require('./routes/users');
+
+//database Connection
+async function databaseConection(){
+  try{
+    await dbConnection.authenticate()
+    console.log('database connection was established succesfully')
+  }catch(err){
+    console.log('connection was not established an error occured ', err)
+  }
+
+}
+databaseConection()
+
+//sync models
+const models = require('./model/index')
+models.db
 
 var app = express();
 
