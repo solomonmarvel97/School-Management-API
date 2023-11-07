@@ -17,7 +17,7 @@ StudentFees.init({
         allowNull : false
     },
 
-    class : {
+    Class : {
         type : DataTypes.STRING,
         allowNull : false
     },

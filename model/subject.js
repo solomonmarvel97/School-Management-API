@@ -22,7 +22,7 @@ Subject.init({
         allowNull : false
     },
 
-    classes : {
+    Classes : {
         type : DataTypes.STRING,
         allowNull : false
     },

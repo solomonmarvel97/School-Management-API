@@ -13,19 +13,19 @@ StudentPromotion.init({
     },
 
     currentClass : {
-        type : DataTypes.ENUM('Jss1', 'Jss2', 'Jss3', 'Ss1', 'Ss2', 'Ss3'),
+        type : DataTypes.ENUM('Jss1', 'Jss2', 'Jss3', 'Sss1', 'Sss2', 'Sss3'),
         allowNull : false
 
     },
 
     promotionFromClass : {
-        type : DataTypes.ENUM('Jss1', 'Jss2', 'Jss3', 'Ss1', 'Ss2', 'Ss3'),
+        type : DataTypes.ENUM('Jss1', 'Jss2', 'Jss3', 'Sss1', 'Sss2', 'Sss3'),
         allowNull : false
         
     },
 
     promotionToClass : {
-        type : DataTypes.ENUM('Jss1', 'Jss2', 'Jss3', 'Ss1', 'Ss2', 'Ss3'),
+        type : DataTypes.ENUM('Jss1', 'Jss2', 'Jss3', 'Sss1', 'Sss2', 'Sss3'),
         allowNull : false
 
     }

@@ -25,6 +25,15 @@ class TeacherService {
         }
     }
 
+    async getTeacherCount(){
+        try{
+            const result = await this.model.count()
+            return result
+        }catch(err){
+            throw err
+        }
+    }
+
     // async getStudent(userId) {
     //     try {
     //         const result = await this.model.findOne({ where: { id: userId } })

@@ -27,8 +27,8 @@ Teacher.init({
         allowNull : false
     },
 
-    class : {
-        type : DataTypes.ENUM('Jss1', 'Jss2', 'Jss3', 'Ss1', 'Ss2', 'Ss3'),
+    Class : {
+        type : DataTypes.ENUM('Jss1', 'Jss2', 'Jss3', 'Sss1', 'Sss2', 'Sss3'),
         allowNull : false
     },
 

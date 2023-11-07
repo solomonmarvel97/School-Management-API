@@ -6,9 +6,9 @@ class ParentService {
         this.model = model
     }
 
-    async createParent(name, gender, phone, religion, fathersOccupation, email, address) {
+    async createParent(fatherName, motherName, email, phone, fathersOccupation, address, parentReligion) {
         try {
-            const result = await this.model.create({ name : name, gender : gender, phone : phone, religion : religion, fathersOccupation : fathersOccupation, email : email, address : address})
+            const result = await this.model.create({ firstName : fatherName, motherName : motherName, email : email, phone : phone, fathersOccupation : fathersOccupation, address : address, parentReligion: parentReligion})
             return result
         } catch (err) {
             throw err
@@ -21,6 +21,15 @@ class ParentService {
             const result = await this.model.findAll()
             return result
         } catch (err) {
+            throw err
+        }
+    }
+
+    async getParentCount(){
+        try{
+            const result = await this.model.count()
+            return result
+        }catch(err){
             throw err
         }
     }

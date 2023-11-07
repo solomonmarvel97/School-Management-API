@@ -7,10 +7,13 @@ class AdminDashboard {
     static async getData(req, res){
         try{
             const studentCount = await service.studentService.getStudentCount()
-            if(!studentCount){
-                return res.status(400).json(new ErrorResponse('data not retrieved'))
+            const teachersCount = await service.teacherService.getTeacherCount()
+            const parentCount = await service.parentService.getParentCount()
+            if(!studentCount && !teachersCount && !parentCount){
+                return res.status(400).json(new ErrorResponse('no data available'))
             }
-            return res.status(200).json(new SuccessResponse('data successfully retrieved', { student : studentCount}))
+            return res.status(200).json(new SuccessResponse('data successfully retrieved', { student : studentCount, teaher : teachersCount,
+            parent : parentCount }))
         }catch(err){
             console.log(err)
             return res.status(500).json(new ErrorResponse('Error retrieving data'))

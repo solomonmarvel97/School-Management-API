@@ -6,9 +6,9 @@ class StudentService {
         this.model = model
     }
 
-    async createStudent(name, gender, studentClass, dateOfBirth, bloodGroup, religion, admissionDate, imageUrl) {
+    async createStudent(name, gender, Class, dateOfBirth, bloodGroup, religion, admissionDate, imageUrl) {
         try {
-            const result = await this.model.create({ name: name, gender: gender, religion : religion, studentClass: studentClass, dateOfBirth: dateOfBirth, bloodGroup: bloodGroup, religion: religion, admissionDate: admissionDate, imageUrl: imageUrl })
+            const result = await this.model.create({ name: name, gender: gender, Class: Class,  dateOfBirth: dateOfBirth,bloodGroup: bloodGroup, religion : religion, admissionDate: admissionDate, imageUrl: imageUrl })
             return result
         } catch (err) {
             throw err
