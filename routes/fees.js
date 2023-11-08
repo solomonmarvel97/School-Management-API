@@ -4,10 +4,10 @@ const controller = require('../controller/index')
 const utils = require('../utils/index')
 const middleware = require('../middleware/authJwt')
 
-router.post('/subjects', middleware.Authorize.verifyToken)
+router.get('/fees/list-fee', middleware.Authorize.verifyToken)
 
-router.get('/subjects/list-subject', middleware.Authorize.verifyToken)
+router.get('/fees/search', middleware.Authorize.verifyToken)
 
-router.get('/expenses/search', middleware.Authorize.verifyToken)
+router.get('/fees/fee-group', middleware.Authorize.verifyToken)
 
 module.exports = router

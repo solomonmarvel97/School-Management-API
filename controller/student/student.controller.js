@@ -78,6 +78,23 @@ class Student {
 
         }
     }
+
+    //promote student
+    static async promoteStudent(req, res){
+        try{
+            const { name, currentClass, promotionFromClass, promotionToClass } = req.body
+            const student = await service.promotionService.promoteStudent(name, currentClass, promotionFromClass, promotionToClass)
+            await service.studentService.updateStudent(name)
+            if(!student){
+                return res.status(400).json(new ErrorResponse('student not promoted'))
+            }
+            return res.status(201).json(new SuccessResponse('student successfully promoted', student))
+        }catch(err){
+            console.log(err)
+            return res.status(500).json(new ErrorResponse('Error promoting student'))
+
+        }
+    }
 }
 
 module.exports = { Student }

@@ -32,4 +32,6 @@ db.parentModel.Parent.hasMany(db.studentModel.Student, { foreignKey : 'id' , onD
 
 db.studentModel.Student.belongsTo(db.parentModel.Parent, { foreignKey : 'id' , onDelete : "CASCADE"})
 
+//1 : M Association
+
 module.exports = { db }

@@ -42,6 +42,14 @@ Teacher.init({
         allowNull : false
     },
 
+    startDate : {
+        type : DataTypes.DATEONLY,
+        allowNull : false,
+        validate : {
+            isDate : true
+        }
+    },
+
     dateOfBirth : {
         type : DataTypes.DATEONLY,
         allowNull : false,

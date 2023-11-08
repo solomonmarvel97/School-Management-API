@@ -11,6 +11,14 @@ class Validation {
         body('refreshtoken', 'refreshtoken must not be empty!').not().notEmpty()
     ]
 
+    static promotionValidation = [
+        body('name', 'name must not be empty!').not().notEmpty(),
+        body('currentClass', 'currentClass" must not be empty!').not().notEmpty(),
+        body('promotionFromClass', 'promotionFromClass must not be empty!').not().notEmpty(),
+        body('promotionToClass', 'promotionToClass must not be empty!').not().notEmpty()
+
+    ]
+
  
 
     // static addStudentValidation = [

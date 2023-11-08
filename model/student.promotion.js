@@ -12,6 +12,11 @@ StudentPromotion.init({
         allowNull : false
     },
 
+    name : {
+        type : DataTypes.STRING,
+        allowNull : false
+    },
+
     currentClass : {
         type : DataTypes.ENUM('1', '2', '3', '4', '5', '6'),
         allowNull : false
