@@ -12,7 +12,7 @@ class AdminDashboard {
             if(!studentCount && !teachersCount && !parentCount){
                 return res.status(400).json(new ErrorResponse('no data available'))
             }
-            return res.status(200).json(new SuccessResponse('data successfully retrieved', { student : studentCount, teaher : teachersCount,
+            return res.status(200).json(new SuccessResponse('data successfully retrieved', { student : studentCount, teacher : teachersCount,
             parent : parentCount }))
         }catch(err){
             console.log(err)

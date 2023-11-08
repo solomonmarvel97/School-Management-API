@@ -24,7 +24,7 @@ Student.init({
     },
 
     Class : {
-        type : DataTypes.ENUM('Jss1', 'Jss2', 'Jss3', 'Sss1', 'Sss2', 'Sss3'),
+        type : DataTypes.ENUM('1', '2', '3', '4', '5', '6'),
         allowNull : false,
     },
 
@@ -42,7 +42,7 @@ Student.init({
     },
 
     religion : {
-        type : DataTypes.STRING,
+        type : DataTypes.ENUM('Christain', 'Islam'),
         allowNull : false
     },
 

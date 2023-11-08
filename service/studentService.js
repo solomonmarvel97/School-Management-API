@@ -6,9 +6,9 @@ class StudentService {
         this.model = model
     }
 
-    async createStudent(name, gender, Class, dateOfBirth, bloodGroup, religion, admissionDate, imageUrl) {
+    async createStudent(name, gender, Class, dateOfBirth, bloodGroup, studentReligion, admissionDate, imageUrl) {
         try {
-            const result = await this.model.create({ name: name, gender: gender, Class: Class,  dateOfBirth: dateOfBirth,bloodGroup: bloodGroup, religion : religion, admissionDate: admissionDate, imageUrl: imageUrl })
+            const result = await this.model.create({ name: name, gender: gender, Class: Class, dateOfBirth: dateOfBirth, bloodGroup: bloodGroup, religion : studentReligion, admissionDate: admissionDate, imageUrl: imageUrl })
             return result
         } catch (err) {
             throw err
@@ -18,7 +18,7 @@ class StudentService {
 
     async listStudent() {
         try {
-            const result = await this.model.findAll()
+            const result = await this.model.findAll({ attributes : ['id','name','gender','Class','dateOfBirth',], include : [{ model : db.parentModel.Parent, attributes : ['address','phone']}]})
             return result
         } catch (err) {
             throw err
@@ -34,18 +34,19 @@ class StudentService {
         }
     }
 
-    // async getStudent(userId) {
-    //     try {
-    //         const result = await this.model.findOne({ where: { id: userId } })
-    //         return result
-    //     } catch (err) {
-    //         throw err
-    //     }
-    // }
+    async getStudent(studentId) {
+        try {
+            const result = await this.model.findOne({ where: { id: studentId } })
+            return result
+        } catch (err) {
+            throw err
+        }
+    }
 
-    async searchStudent(name, student_class){
+    async searchStudent(name, studentClass){
         try{
-            const result = await this.model.findAll({ where : { name : {[Op.like] : `%${name}%`}, class : student_class }})
+            const result = await this.model.findAll({ where : {[Op.and] : [ name ? { name : {[Op.like]: `%${name}%`}} : null,
+            studentClass ? { Class : studentClass } : null ]},  attributes : ['id','name','gender','Class','dateOfBirth'], include : [{ model : db.parentModel.Parent, attributes : ['address','phone']}]})
             return result
         }catch(err){
             throw err

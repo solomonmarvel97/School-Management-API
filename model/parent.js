@@ -39,7 +39,7 @@ Parent.init({
         }
     },
 
-    fatherOccupation : {
+    fathersOccupation : {
         type : DataTypes.STRING,
         allowNull :false
     },
@@ -50,7 +50,7 @@ Parent.init({
     },
 
     religion : {
-        type : DataTypes.ENUM('Christain','Muslim'),
+        type : DataTypes.ENUM('Christain','Islam'),
         allowNull : false
     }
 }, {

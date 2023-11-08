@@ -27,4 +27,9 @@ db.teacherModel.Teacher.hasMany(db.subjectModel.Subject, { onDelete : 'CASCADE'}
 
 db.subjectModel.Subject.belongsTo(db.teacherModel.Teacher, { onDelete : 'CASCADE'})
 
+// 1 : M Association
+db.parentModel.Parent.hasMany(db.studentModel.Student, { foreignKey : 'id' , onDelete : 'CASCADE'})
+
+db.studentModel.Student.belongsTo(db.parentModel.Parent, { foreignKey : 'id' , onDelete : "CASCADE"})
+
 module.exports = { db }

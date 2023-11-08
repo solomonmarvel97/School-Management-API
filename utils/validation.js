@@ -11,6 +11,8 @@ class Validation {
         body('refreshtoken', 'refreshtoken must not be empty!').not().notEmpty()
     ]
 
+ 
+
     // static addStudentValidation = [
     //     body('name', 'name must not be empty!').not().notEmpty(),
     //     body('gender', 'gender must not be empty!').not().notEmpty(),
