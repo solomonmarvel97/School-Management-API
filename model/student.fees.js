@@ -17,6 +17,11 @@ StudentFees.init({
         allowNull : false
     },
 
+    gender : {
+        type : DataTypes.ENUM('Male','Female'),
+        allowNull : false
+    },
+
     Class : {
         type : DataTypes.STRING,
         allowNull : false
@@ -35,7 +40,7 @@ StudentFees.init({
         allowNull : false
     },
 
-    parentEmail : {
+    email : {
         type : DataTypes.STRING,
         allowNull : false,
         validate : {
@@ -43,7 +48,7 @@ StudentFees.init({
         }
     },
 
-    parentPhone : {
+    phone : {
         type : DataTypes.BIGINT,
         allowNull : false,
         validate : {
@@ -57,5 +62,5 @@ StudentFees.init({
     updatedAt : true
 })
 sequelize.sync()
-
+// StudentFees.create({ name : 'Ray', gender : 'Male', Class : 2, amount : 20000.00, status : 'Unpaid', email : 'judeoc@gmail.com', phone : 8132592260})
 module.exports = { StudentFees }

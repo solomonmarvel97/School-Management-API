@@ -12,28 +12,26 @@ Subject.init({
         allowNull : false
     },
 
-    name : {
+    subject : {
         type : DataTypes.STRING,
         allowNull : false
     },
 
-    teacherName : {
+    teacher : {
         type : DataTypes.STRING,
         allowNull : false
     },
 
     Classes : {
-        type : DataTypes.STRING,
+        type : DataTypes.ENUM('1','2','3','4','5','6','124','123','125'),
         allowNull : false
     },
 
     days : {
-        type : DataTypes.DATEONLY,
+        type : DataTypes.STRING,
         allowNull : false,
-        validate : {
-            isDate : true
-        }
     }
+
 }, {
     sequelize,
     modelName : 'subject',

@@ -1,4 +1,5 @@
 const { db } = require("../model")
+const { Op } = require('sequelize')
 
 class SubjectService {
     constructor(model){
@@ -23,12 +24,12 @@ class SubjectService {
         }
     }
 
-    async searchSubject(subject, Class){
+    async searchSubject(subject, Classes){
      try{
         const result = await this.model.findAll({
             where: {
                 [Op.and]: [subject ? { subject: { [Op.like]: `%${subject}%` } } : null,
-                Class ? { Class : Class } : null,]
+                Classes ? { Classes : Classes } : null,]
             }, attributes: ['subject', 'teacher', 'Classes','days']
         })
         return result

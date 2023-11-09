@@ -37,7 +37,7 @@ class Parent {
     }
 
 
-    //Search for a Parent
+    //Search by name and filter by religion
     static async searchParent(req, res) {
         try {
             const { name, religion } = req.query

@@ -1,4 +1,5 @@
 const { db } = require("../model")
+const { Op } = require('sequelize')
 
 class ExpenseService {
     constructor(model){
@@ -16,7 +17,7 @@ class ExpenseService {
 
     async listExpense(){
         try{
-            const result = await this.model.findAll({ attributes : ['name','expenseType','amount','status','email','phone','dueDate']})
+            const result = await this.model.findAll({ attributes : ['id','name','expenseType','amount','status','email','phone','dueDate']})
             return result
         }catch(err){
             throw err

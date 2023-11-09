@@ -7,7 +7,7 @@ const { SuccessResponse } = require('../../middleware/succesHandler')
 
 class Auth {
 
-    //Admin login logic
+    //Admin login 
     static async login(req, res) {
         try {
             const findUsername = await service.adminService.findUsername(req.body.username)
@@ -49,7 +49,7 @@ class Auth {
 
     }
 
-    //forgot password logic
+    //forgot password 
     static async forgotPassord(req, res){
         try{
 
@@ -58,7 +58,7 @@ class Auth {
         }
     }
 
-    //update admin password logic
+    //update admin password 
     static async updatePassword(req, res){
         try{
 

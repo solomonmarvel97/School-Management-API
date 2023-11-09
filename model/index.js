@@ -22,11 +22,6 @@ db.adminModel.Admin.hasOne(db.refreshtokenModel.RefreshToken, { foreignKey : 'id
 
 db.refreshtokenModel.RefreshToken.belongsTo(db.adminModel.Admin, { foreignKey : 'id' , onDelete : 'CASCADE' })
 
-//1 : M Association
-db.teacherModel.Teacher.hasMany(db.subjectModel.Subject, { onDelete : 'CASCADE'})
-
-db.subjectModel.Subject.belongsTo(db.teacherModel.Teacher, { onDelete : 'CASCADE'})
-
 // 1 : M Association
 db.parentModel.Parent.hasMany(db.studentModel.Student, { foreignKey : 'id' , onDelete : 'CASCADE'})
 

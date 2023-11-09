@@ -5,7 +5,7 @@ const cloudinary = require('cloudinary').v2
 
 class Student {
 
-    // Add a Student 
+    // Add a new Student 
     static async addStudent(req, res) {
         try {
             const { name, gender, Class, dateOfBirth, bloodGroup, studentReligion, addmissionDate,
@@ -62,7 +62,7 @@ class Student {
         }
     }
 
-    //Search for a Student
+    //Search by name and filter by  class
     static async searchStudent(req, res) {
         try {
             const { name, Class } = req.query
@@ -80,19 +80,77 @@ class Student {
     }
 
     //promote student
-    static async promoteStudent(req, res){
-        try{
+    static async promoteStudent(req, res) {
+        try {
             const { name, currentClass, promotionFromClass, promotionToClass } = req.body
             const student = await service.promotionService.promoteStudent(name, currentClass, promotionFromClass, promotionToClass)
             await service.studentService.updateStudent(name)
-            if(!student){
+            if (!student) {
                 return res.status(400).json(new ErrorResponse('student not promoted'))
             }
             return res.status(201).json(new SuccessResponse('student successfully promoted', student))
-        }catch(err){
+        } catch (err) {
             console.log(err)
             return res.status(500).json(new ErrorResponse('Error promoting student'))
 
+        }
+    }
+
+    //Return a list of student fees
+    static async listStudentFee(req, res) {
+        try {
+            const student = await service.feesService.listStudentFee()
+            if (!student) {
+                return res.status(400).json(new ErrorResponse('fees not retrieved'))
+            }
+            return res.status(200).json(new SuccessResponse('fees successfully retrieved', student))
+        } catch (err) {
+            console.log(err)
+            return res.status(500).json(new ErrorResponse('Error retrieving fees'))
+        }
+    }
+
+    //Search by name and filter by Class and status
+    static async searchFee(req, res) {
+        try {
+            const { name, Class, status } = req.query
+            const studentFee = await service.feesService.searchFee(name, Class, status)
+            if (!studentFee) {
+                return res.status(404).json(new ErrorResponse('student fee not found'))
+            }
+            return res.status(200).json(new SuccessResponse('student fee successfully retrieved', studentFee))
+        } catch (err) {
+            console.log(err)
+            return res.status(500).json(new ErrorResponse('Error retrieving fee'))
+        }
+    }
+
+    //Return a List of feeGroup
+    static async listFeeGroup(req, res) {
+        try {
+            const feeGroup = await service.feesgroupService.listFeesGroup()
+            if (!feeGroup) {
+                return res.status(400).json(new ErrorResponse('feesGroup not retrieved'))
+            }
+            return res.status(200).json(new SuccessResponse('feesGroup successfully retrieved', feeGroup))
+        } catch (err) {
+            console.log(err)
+            return res.status(500).json(new ErrorResponse('Error retrieving feeGroup'))
+        }
+    }
+
+    //Search for a FeeGroup
+    static async searchFeeGroup(req, res){
+        try{
+            const { name } = req.query
+            const feeGroup = await service.feesgroupService.searchFeeGroup(name)
+            if(!feeGroup){
+                return res.status(404).json(new ErrorResponse('feeGroup not found'))
+            } 
+            return res.satus(200).json(new SuccessResponse('feesGroup successfully retrieved',feeGroup))
+        }catch(err){
+            console.log(err)
+            return res.status(500).json(new ErrorResponse('Error retrieving fee'))
         }
     }
 }

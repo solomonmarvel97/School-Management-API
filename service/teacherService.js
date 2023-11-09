@@ -36,7 +36,7 @@ class TeacherService {
 
     async getTeacher(studentId) {
         try {
-            const result = await this.model.findOne({ where: { id: studentId }, attributes : ['id','firstName','lastName','gender','Class','subject','address', 'dateOfBirth', 'phone'] })
+            const result = await this.model.findOne({ where: { id: studentId }, attributes : ['imageUrl','id','firstName','lastName','gender','Class','subject','address', 'dateOfBirth','email', 'phone'] })
             return result
         } catch (err) {
             throw err

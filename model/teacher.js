@@ -37,6 +37,14 @@ Teacher.init({
         allowNull : false
     },
 
+    email : {
+        type : DataTypes.STRING,
+        allowNull : false,
+        validate : {
+            isEmail : true
+        }
+    },
+
     address : {
         type : DataTypes.STRING,
         allowNull : false
@@ -63,6 +71,14 @@ Teacher.init({
         allowNull : false,
         validate : {
             isNumeric : true
+        }
+    },
+
+    imageUrl : {
+        type : DataTypes.STRING,
+        allowNull : false,
+        validate : {
+            isUrl : true
         }
     }
 }, {

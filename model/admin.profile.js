@@ -42,6 +42,11 @@ AdminProfile.init({
     address : {
         type : DataTypes.STRING,
         allowNull : false
+    },
+
+    languages : {
+        type : DataTypes.ENUM('English','French','Greek'),
+        allowNull : false
     }
 }, {
     sequelize,

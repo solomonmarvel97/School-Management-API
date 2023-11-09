@@ -4,10 +4,10 @@ const controller = require('../controller/index')
 const utils = require('../utils/index')
 const middleware = require('../middleware/authJwt')
 
-router.post('/subjects', middleware.Authorize.verifyToken)
+router.post('/subjects',utils.validation.subjectValidation, utils.validation.check, middleware.Authorize.verifyToken, controller.teacherController.Teacher.addSubject)
 
-router.get('/subjects/list-subject', middleware.Authorize.verifyToken)
+router.get('/subjects/list-subject', middleware.Authorize.verifyToken, controller.teacherController.Teacher.listSubject)
 
-router.get('/expenses/search', middleware.Authorize.verifyToken)
+router.get('/subjects/search', middleware.Authorize.verifyToken, controller.teacherController.Teacher.searchSubject)
 
 module.exports = router

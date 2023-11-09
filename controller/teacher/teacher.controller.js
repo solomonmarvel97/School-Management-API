@@ -5,7 +5,7 @@ const cloudinary = require('cloudinary').v2
 
 class Teacher {
 
-    // Add a Teacher 
+    // Add a new teacher 
     static async addTeacher(req, res) {
         try {
             const { fisrtname, lastname, gender, dateOfBirth , bloodGroup, religion, email , phone ,Class, subject, address,  startDate } = req.body
@@ -28,7 +28,7 @@ class Teacher {
         }
     }
 
-    //Return a List of Teachers
+    //Return a list of teachers
     static async listTeacher(req, res) {
         try {
             const teacher = await service.teacherService.listTeacher()
@@ -44,7 +44,7 @@ class Teacher {
 
     }
 
-    //Get a Particular Teacher
+    //Get a particular teacher
     static async getTeacher(req, res) {
         try {
             const teacherId = req.params.id
@@ -60,7 +60,7 @@ class Teacher {
         }
     }
 
-    //Search for a Teacher
+    //Search by name and filter by Class
     static async searchTeacher(req, res) {
         try {
             const { name, Class } = req.query
@@ -71,6 +71,52 @@ class Teacher {
             return res.status(200).json(new SuccessResponse('teacher successfully retrieved', teacher))
 
         } catch (err) {
+            console.log(err)
+            return res.status(500).json(new ErrorResponse('Internal server error'))
+
+        }
+    }
+
+    //Add a new subject
+    static async addSubject(req, res){
+        try{
+            const { name, teacher, Classes, days } = req.body
+            const subject = await service.subjectService.createSubject(name, teacher, Classes, days)
+            if(!subject){
+                return res.status(400).json(new ErrorResponse('subject not created'))
+            }
+            return res.status(200).json(new SuccessResponse('subject succesfully added', subject))
+        }catch(err){
+            console.log(err)
+            return res.status(500).json(new ErrorResponse('Error adding subject'))
+        }
+    }
+
+    //Return a List of Subject
+    static async listSubject(req, res){
+        try{
+            const subject = await service.subjectService.listSubject()
+            if(!subject){
+                return res.status(400).json(new ErrorResponse('subject not retrieved'))
+            }
+            return res.status(200).json(new SuccessResponse('subject successfully retrieved', subject))
+
+        }catch(err){
+            console.log(err)
+            return res.status(500).json(new ErrorResponse('Error retrieving subject'))
+        }
+    }
+
+    //Search by subject and filter by Classes
+    static async searchSubject(req, res){
+        try{
+            const { subject, Classes } = req.query
+            const search = await service.subjectService.searchSubject(subject, Classes)
+            if(!search){
+                return res.status(404).json(new ErrorResponse('subject not found'))
+            }
+            return res.status(200).json(new SuccessResponse('subject retrieved succesfully', search))
+        }catch(err){
             console.log(err)
             return res.status(500).json(new ErrorResponse('Internal server error'))
 
