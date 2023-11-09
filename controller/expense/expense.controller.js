@@ -1,7 +1,6 @@
 const service = require('../../service/index')
 const { ErrorResponse } = require('../../middleware/errorHandler')
 const { SuccessResponse } = require('../../middleware/succesHandler')
-const cloudinary = require('cloudinary').v2
 
 class Expense {
 

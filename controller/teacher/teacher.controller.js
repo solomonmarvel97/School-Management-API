@@ -14,9 +14,7 @@ class Teacher {
             if (image === null) {
                 return res.status(400).json(new ErrorResponse('image field required!'))
             }
-            const uploadImage = await cloudinary.uploader.upload(image.path, {
-                resource_type: 'auto'
-            })
+            const uploadImage = await cloudinary.uploader.upload(image.path, {resource_type: 'auto'})
             const newTeacher = await service.teacherService.createTeacher( fisrtname, lastname, gender, dateOfBirth , bloodGroup, religion, email , phone , Class, subject, address,  startDate, uploadImage.secure_url)
             if (!newTeacher) {
                 return res.status(400).json(new ErrorResponse('teacher not added'))

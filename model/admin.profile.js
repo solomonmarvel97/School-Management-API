@@ -13,6 +13,22 @@ AdminProfile.init({
         allowNull : false
     },
 
+    profileImage : {
+        type : DataTypes.STRING,
+        allowNull : false,
+        validate : {
+            isUrl : true
+        }
+    },
+
+    coverImage : {
+        type : DataTypes.STRING,
+        allowNull : false,
+        validate : {
+            isUrl : true
+        }
+    },
+
     schoolName : {
         type : DataTypes.STRING,
         allowNull : false
@@ -50,7 +66,7 @@ AdminProfile.init({
     }
 }, {
     sequelize,
-    modelName : 'admin_profile',
+    modelName : 'adminprofile',
     createdAt : true,
     updatedAt : true
 })

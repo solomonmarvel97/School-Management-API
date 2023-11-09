@@ -15,9 +15,7 @@ class Student {
             if (image === null) {
                 return res.status(400).json(new ErrorResponse('image field required!'))
             }
-            const uploadImage = await cloudinary.uploader.upload(image.path, {
-                resource_type: 'auto'
-            })
+            const uploadImage = await cloudinary.uploader.upload(image.path, { resource_type: 'auto' })
             const newParent = await service.parentService.createParent(fatherName, motherName, email, phone, fathersOccupation, address, parentReligion)
             const newStudent = await service.studentService.createStudent(name, gender, Class, dateOfBirth, bloodGroup, studentReligion, addmissionDate, uploadImage.secure_url)
             if (!newStudent && !newParent) {
@@ -140,15 +138,15 @@ class Student {
     }
 
     //Search for a FeeGroup
-    static async searchFeeGroup(req, res){
-        try{
+    static async searchFeeGroup(req, res) {
+        try {
             const { name } = req.query
             const feeGroup = await service.feesgroupService.searchFeeGroup(name)
-            if(!feeGroup){
+            if (!feeGroup) {
                 return res.status(404).json(new ErrorResponse('feeGroup not found'))
-            } 
-            return res.satus(200).json(new SuccessResponse('feesGroup successfully retrieved',feeGroup))
-        }catch(err){
+            }
+            return res.satus(200).json(new SuccessResponse('feesGroup successfully retrieved', feeGroup))
+        } catch (err) {
             console.log(err)
             return res.status(500).json(new ErrorResponse('Error retrieving fee'))
         }

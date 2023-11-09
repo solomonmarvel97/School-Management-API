@@ -7,7 +7,16 @@ class AdminService {
 
     async findUsername(username) {
         try {
-            const result = await this.model.findOne({ where: { username: username }})
+            const result = await this.model.findOne({ where: { username: username } })
+            return result
+        } catch (err) {
+            throw err
+        }
+    }
+
+    async updateAdmin(id, username, password) {
+        try {
+            const result = await this.model.update({ username, password }, { where: { id: id } })
             return result
         } catch (err) {
             throw err
@@ -16,4 +25,4 @@ class AdminService {
 
 }
 
-module.exports = { AdminService : new AdminService(db.adminModel.Admin)}
+module.exports = { AdminService: new AdminService(db.adminModel.Admin) }

@@ -10,11 +10,12 @@ class Auth {
     //Admin login 
     static async login(req, res) {
         try {
-            const findUsername = await service.adminService.findUsername(req.body.username)
+            const { username, password } = req.body
+            const findUsername = await service.adminService.findUsername(username)
             if (!findUsername) {
                 return res.status(400).json(new ErrorResponse('incorrect username'))
             }
-            const comparePassword = bcrypt.compareSync(req.body.password, findUsername.password.toString())
+            const comparePassword = bcrypt.compareSync(password, findUsername.password.toString())
             if (!comparePassword) {
                 return res.status(400).json(new ErrorResponse('incorrect passord'))
             }
