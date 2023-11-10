@@ -4,6 +4,6 @@ const controller = require('../controller/index')
 const utils = require('../utils/index')
 const middleware = require('../middleware/authJwt')
 
-router.get('/dashboard', middleware.Authorize.verifyToken, controller.dashboardController.AdminDashboard.getData)
+router.get('/api/dashboard', middleware.Authorize.verifyToken, controller.dashboardController.AdminDashboard.getData)
 
 module.exports = router

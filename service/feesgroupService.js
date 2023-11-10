@@ -17,7 +17,7 @@ class feesGropuService {
 
     async searchFeeGroup(feeGroup){
         try{
-            const result = await this.model.findAll({ where : { name : {[Op.like] :`%${feeGroup}%`}}})
+            const result = await this.model.findAll({ where: { name: {[Op.like]: `%${feeGroup}%`}}})
             return result
         }catch(err){
             throw err

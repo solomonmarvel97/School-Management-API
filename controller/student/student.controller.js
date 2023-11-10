@@ -145,7 +145,7 @@ class Student {
             if (!feeGroup) {
                 return res.status(404).json(new ErrorResponse('feeGroup not found'))
             }
-            return res.satus(200).json(new SuccessResponse('feesGroup successfully retrieved', feeGroup))
+            return res.status(200).json(new SuccessResponse('feesGroup successfully retrieved', feeGroup))
         } catch (err) {
             console.log(err)
             return res.status(500).json(new ErrorResponse('Error retrieving fee'))

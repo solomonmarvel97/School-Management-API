@@ -7,15 +7,15 @@ const { storage } = require('../config/cloudinary')
 const multer = require('multer')
 const upload = multer({ storage })
 
-router.post('/students', middleware.Authorize.verifyToken, upload.fields([{ name : 'studentImage', maxCount : 1}]), controller.studentController.Student.addStudent)
+router.post('/api/students', middleware.Authorize.verifyToken, upload.fields([{ name : 'studentImage', maxCount : 1}]), controller.studentController.Student.addStudent)
 
-router.post('/student/promote', utils.validation.promotionValidation, utils.validation.check, middleware.Authorize.verifyToken, controller.studentController.Student.promoteStudent)
+router.post('/api/student/promote', utils.validation.promotionValidation, utils.validation.check, middleware.Authorize.verifyToken, controller.studentController.Student.promoteStudent)
 
-router.get('/students/list-student', middleware.Authorize.verifyToken, controller.studentController.Student.listStudent)
+router.get('/api/students/list-student', middleware.Authorize.verifyToken, controller.studentController.Student.listStudent)
 
-router.get('/students/search', middleware.Authorize.verifyToken, controller.studentController.Student.searchStudent)
+router.get('/api/students/search', middleware.Authorize.verifyToken, controller.studentController.Student.searchStudent)
 
-router.get('/students/:id', middleware.Authorize.verifyToken, controller.studentController.Student.getStudent)
+router.get('/api/students/:id', middleware.Authorize.verifyToken, controller.studentController.Student.getStudent)
 
 
 module.exports = router

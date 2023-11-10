@@ -15,7 +15,7 @@ class Profile {
             const uplaodcoverImage = await cloudinary.uploader.upload(coverImage.path, { resource_type : 'auto'})
             const uploadprofileImge = await cloudinary.uploader.upload(profileImage.path, {resource_type : 'auto'})
 
-            const profile = await service.profileService.createProfile(uplaodcoverImage.secure_url, uploadprofileImge.secure_url, schoolName, email,phone, city, address, languages)
+            const profile = await service.profileService.createProfile(uplaodcoverImage.secure_url, uploadprofileImge.secure_url, schoolName, email,phone, city, address, languages, req.id)
             if(!profile){
                 return res.status(400).json(new ErrorResponse('profile not created'))
             }
@@ -30,7 +30,7 @@ class Profile {
     
     static async viewProfile(req, res){
         try{
-            const profile = await service.profileService.getProfile(1)
+            const profile = await service.profileService.getProfile(req.id)
             if(!profile){
                 return res.status(400).json(new ErrorResponse('profile not retrieved'))
             }

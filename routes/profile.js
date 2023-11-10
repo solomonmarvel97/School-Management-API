@@ -5,12 +5,13 @@ const utils = require('../utils/index')
 const { storage } = require('../config/cloudinary')
 const multer = require('multer')
 const upload = multer({ storage })
+const middleware = require('../middleware/authJwt')
 
-router.post('/profile', upload.fields([{ name : 'coverImage', maxCount : 1 }, { name : 'profileImage', maxCount : 1 }]) ,controller.profileController.Profile.addProfile)
+router.post('/api/profiles', middleware.Authorize.verifyToken,  upload.fields([{ name : 'coverImage', maxCount : 1 }, { name : 'profileImage', maxCount : 1 }]) ,controller.profileController.Profile.addProfile)
 
-.get('/profile', controller.profileController.Profile.viewProfile)
+router.get('/api/profiles/view-profile', middleware.Authorize.verifyToken, controller.profileController.Profile.viewProfile)
 
-.patch('/profile', controller.profileController.Profile.updateProfile)
+router.patch('/api/profiles/update-profile', middleware.Authorize.verifyToken, controller.profileController.Profile.updateProfile)
 
 
 module.exports = router

@@ -7,12 +7,12 @@ const { storage } = require('../config/cloudinary')
 const multer = require('multer')
 const upload = multer({ storage })
 
-router.post('/teachers', middleware.Authorize.verifyToken,upload.fields([{ name : 'teacherImage', maxCount : 1}]) ,controller.teacherController.Teacher.addTeacher)
+router.post('/api/teachers', middleware.Authorize.verifyToken,upload.fields([{ name : 'teacherImage', maxCount : 1}]) ,controller.teacherController.Teacher.addTeacher)
 
-router.get('/teachers/list-teacher',  middleware.Authorize.verifyToken, controller.teacherController.Teacher.listTeacher)
+router.get('/api/teachers/list-teacher',  middleware.Authorize.verifyToken, controller.teacherController.Teacher.listTeacher)
 
-router.get('/teachers/search', middleware.Authorize.verifyToken, controller.teacherController.Teacher.searchTeacher)
+router.get('/api/teachers/search', middleware.Authorize.verifyToken, controller.teacherController.Teacher.searchTeacher)
 
-router.get('/teachers/:id',  middleware.Authorize.verifyToken, controller.teacherController.Teacher.getTeacher)
+router.get('/api/teachers/:id',  middleware.Authorize.verifyToken, controller.teacherController.Teacher.getTeacher)
 
 module.exports = router

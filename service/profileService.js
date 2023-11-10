@@ -5,9 +5,9 @@ class ProfileService {
         this.model = model
     }
 
-    async createProfile(profileImage, coverImage, schoolName, email, phone, city, address, languages) {
+    async createProfile(profileImage, coverImage, schoolName, email, phone, city, address, languages, adminId) {
         try {
-            const result = await this.model.create({ profileImage: profileImage, coverImage: coverImage, schoolName: schoolName, email: email, phone: phone, city: city, address: address, languages: languages })
+            const result = await this.model.create({ profileImage: profileImage, coverImage: coverImage, schoolName: schoolName, email: email, phone: phone, city: city, address: address, languages: languages, adminId : adminId })
             return result
         } catch (err) {
             throw err
@@ -17,7 +17,7 @@ class ProfileService {
 
     async getProfile(id) {
         try {
-            const result = await this.model.findOne({ attributes: ['coverImage', 'profileImage', 'schoolName', 'email', 'phone', 'city', 'address', 'languages'], include: { model: db.adminModel.Admin, attributes: ['username', 'password'] } }, { where: { id: id } })
+            const result = await this.model.findOne( {attributes : ['coverImage','profileImage','schoolName','email','phone','city','address','languages'], include: { model : db.adminModel.Admin, attributes : ['username']}, where : { id: id}})
             return result
         } catch (err) {
             throw err
