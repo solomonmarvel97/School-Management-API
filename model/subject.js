@@ -23,7 +23,7 @@ Subject.init({
     },
 
     Classes : {
-        type : DataTypes.ENUM('1','2','3','4','5','6','124','123','125'),
+        type : DataTypes.ENUM('1,2&4','6&JHS1','1','2','3','4','5','6'),
         allowNull : false
     },
 
@@ -38,6 +38,6 @@ Subject.init({
     createdAt : true,
     updatedAt : true
 })
-sequelize.sync()
+sequelize.sync({ force : true})
 
 module.exports = { Subject }
