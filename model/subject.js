@@ -38,6 +38,6 @@ Subject.init({
     createdAt : true,
     updatedAt : true
 })
-sequelize.sync({ force : true})
+sequelize.sync()
 
 module.exports = { Subject }
