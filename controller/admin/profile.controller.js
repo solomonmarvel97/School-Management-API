@@ -32,7 +32,7 @@ class Profile {
         try{
             const profile = await service.profileService.getProfile(req.id)
             if(!profile){
-                return res.status(400).json(new ErrorResponse('profile not retrieved'))
+                return res.status(400).json(new ErrorResponse('you have not added a profile'))
             }
             return res.status(200).json(new SuccessResponse('profile successfully retrieved', profile))
         }catch(err){
