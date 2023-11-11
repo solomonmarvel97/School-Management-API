@@ -33,6 +33,5 @@ This is a School-Mangement API built with Nodejs + express js
 
 
 # Api Documentation Postman
+https://www.postman.com/cloudy-escape-698934/workspace/project-workspace/collection/24822385-beed9d45-989e-4e45-a219-c2e1c43d9004?action=share&creator=24822385&active-environment=24822385-a273b284-c908-4654-88f3-21310e5ccaa5
 
-
-# Api Documentation Swagger
