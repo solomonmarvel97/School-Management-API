@@ -6,7 +6,7 @@ describe('Add Student and parent', () => {
     it('should create new  student and parent', (done) => {
         return request(app)
             .post('/api/parents/list-parent')
-            .set('Authorization', `${process.env.ACCESS_TOKEN}`)
+            .set('Authorization', '')
             .send({ name : '', gender :'', Class : '', dateOfBirth : '', bloodGroup : '', studentReligion : '', addmissionDate : '',
                 fatherName : '', motherName : '', email : '', phone : '', fathersOccupation:'', address : '', parentReligion : ''})
             .expect(201)
@@ -23,7 +23,7 @@ describe('Promote Student', () => {
     it('should promote a student to another class', (done) => {
         return request(app)
             .get('/api/students/promote')
-            .set('Authorization', `${process.env.ACCESS_TOKEN}`)
+            .set('Authorization', '')
             .send({name:'Allan', currentClass : 1, promotionFromClass : 1, promotionToClass : 2})
             .expect(201)
             .end((err, res) => {
@@ -39,7 +39,7 @@ describe('List students', () => {
     it('should retrieve all student', (done) => {
         return request(app)
             .get('/api/students/list-student')
-            .set('Authorization', `${process.env.ACCESS_TOKEN}`)
+            .set('Authorization', '')
             .expect(200)
             .end((err, res) => {
                 if (err) {
@@ -55,8 +55,8 @@ describe('Search student', () => {
         const name = 'Allan'
         const Class = 1
         return request(app)
-            .get(`/api/students/search?name${name}&Class${Class}`)
-            .set('Authorization', `${process.env.ACCESS_TOKEN}`)
+            .get(`/api/students/search?name=${name}&Class=${Class}`)
+            .set('Authorization', '')
             .expect(200)
             .end((err, res) => {
                 if (err) {
@@ -73,7 +73,7 @@ describe('Get a student', () => {
         const studentId = 1
         return request(app)
             .get(`/api/students/${studentId}`)
-            .set('Authorization', `${process.env.ACCESS_TOKEN}`)
+            .set('Authorization', '')
             .expect(200)
             .end((err, res) => {
                 if (err) {

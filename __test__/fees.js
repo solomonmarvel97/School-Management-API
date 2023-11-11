@@ -4,14 +4,15 @@ require('dotenv').config()
 
 describe('List fees', () => {
     it('should retrieve all fees', (done) => {
-        return request(app)
+        request(app)
             .get('/api/fees/list-fee')
-            .set('Authorization', `${process.env.ACCESS_TOKEN}`)
+            .set('Authorization', '')
             .expect(200)
             .end((err, res) => {
                 if (err) {
                     return done(err)
                 }
+                console.log(res.body)
                 done()
             })
     })
@@ -22,14 +23,15 @@ describe('Search fees', () => {
         const name = 'Allan'
         const Class = 1
         const status = 'Unpaid'
-        return request(app)
-            .get(`/api/fees/search?name${name}&expenseType${Class}&status${status}`)
-            .set('Authorization', `${process.env.ACCESS_TOKEN}`)
+        request(app)
+            .get(`/api/fees/search?name=${name}&expenseType&=${Class}&status=${status}`)
+            .set('Authorization', '')
             .expect(200)
             .end((err, res) => {
                 if (err) {
                     return done(err)
                 }
+                console.log(res.body)
                 done()
             })
     })
@@ -38,14 +40,15 @@ describe('Search fees', () => {
 
 describe('List fee group', () => {
     it('should retrieve all fee group', (done) => {
-        return request(app)
+        request(app)
             .get('/api/fees/list-group')
-            .set('Authorization', `${process.env.ACCESS_TOKEN}`)
+            .set('Authorization', '')
             .expect(200)
             .end((err, res) => {
                 if (err) {
                     return done(err)
                 }
+                console.log(res.body)
                 done()
             })
     })
@@ -53,15 +56,15 @@ describe('List fee group', () => {
 
 describe('Search fees group', () => {
     it('should retrieve fee group that matches the search query', (done) => {
-        const name = 'class 1'
-        return request(app)
-            .post(`/api/fees/group-search?name${name}`)
-            .set('Authorization', `${process.env.ACCESS_TOKEN}`)
+        const name = 'Creche Fees'
+        request(app)
+            .get(`/api/fees/group-search?name=${name}`)
+            .set('Authorization', '')
             .expect(200)
             .end((err, res) => {
-                if (err) {
+                if (err) 
                     return done(err)
-                }
+                console.log(res.body)
                 done()
             })
     })

@@ -4,9 +4,9 @@ require('dotenv').config()
 
 describe('List parent', () => {
     it('should retrieve all parent', (done) => {
-        return request(app)
+        request(app)
             .get('/api/parents/list-parent')
-            .set('Authorization', `${process.env.ACCESS_TOKEN}`)
+            .set('Authorization', '')
             .expect(200)
             .end((err, res) => {
                 if (err) {
@@ -20,10 +20,10 @@ describe('List parent', () => {
 describe('Search parent', () => {
     it('should retrieve parent that matches the search query and filter', (done) => {
         const name = 'Allan'
-        const religion = 1
-        return request(app)
-            .get(`/api/parents/search?name${name}&religion${religion}`)
-            .set('Authorization', `${process.env.ACCESS_TOKEN}`)
+        const religion = 'Islam'
+        request(app)
+            .get(`/api/parents/search?name=${name}&religion=${religion}`)
+            .set('Authorization', '')
             .expect(200)
             .end((err, res) => {
                 if (err) {
@@ -38,9 +38,9 @@ describe('Search parent', () => {
 describe('Get a parent', () => {
     it('should retrieve a parent', (done) => {
         const parentId = 1
-        return request(app)
+        request(app)
             .get(`/api/parents/${parentId}`)
-            .set('Authorization', `${process.env.ACCESS_TOKEN}`)
+            .set('Authorization', '')
             .expect(200)
             .end((err, res) => {
                 if (err) {

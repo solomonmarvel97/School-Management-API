@@ -2,6 +2,8 @@ var createError = require('http-errors');
 var express = require('express');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var cors = require('cors')
+var helmet = require('helmet')
 
 var baseRouter = require('./routes/index');
 var authRouter = require('./routes/auth')
@@ -42,6 +44,16 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
+// CORS Enabled resource from this server can be accessed by any origin
+const options = {
+  origin: '*',
+  methods: ['POST', 'PATCH', 'GET', 'DELETE'],
+  allowheader: ['Content-Type', 'Authorization']
+}
+app.use(cors(options))
+
+// use helmet middleware
+app.use(helmet())
 
 app.use('/', baseRouter, authRouter, parentRouter, studentRouter, subjectRouter, teacherRouter, adminRouter, profileRouter, feesRouter, expenseRouter);
 
