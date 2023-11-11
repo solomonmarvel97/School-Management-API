@@ -2,10 +2,10 @@ const app = require('../app')
 const request = require('supertest')
 require('dotenv').config()
 
-describe('Add parent', () => {
-    it('should create or add parent', (done) => {
+describe('Add Student and parent', () => {
+    it('should create new  student and parent', (done) => {
         return request(app)
-            .get('/api/parents/list-parent')
+            .post('/api/parents/list-parent')
             .set('Authorization', `${process.env.ACCESS_TOKEN}`)
             .send({ name : '', gender :'', Class : '', dateOfBirth : '', bloodGroup : '', studentReligion : '', addmissionDate : '',
                 fatherName : '', motherName : '', email : '', phone : '', fathersOccupation:'', address : '', parentReligion : ''})
@@ -19,12 +19,43 @@ describe('Add parent', () => {
     })
 })
 
-describe('List Student', () => {
-    it('should retrieve parent that matches the search query and filter', (done) => {
-        const name = 'Allan'
-        const religion = 1
+describe('Promote Student', () => {
+    it('should promote a student to another class', (done) => {
         return request(app)
-            .get(`/api/parents/search?name${name}&religion${religion}`)
+            .get('/api/students/promote')
+            .set('Authorization', `${process.env.ACCESS_TOKEN}`)
+            .send({name:'Allan', currentClass : 1, promotionFromClass : 1, promotionToClass : 2})
+            .expect(201)
+            .end((err, res) => {
+                if (err) {
+                    return done(err)
+                }
+                done()
+            })
+    })
+})
+
+describe('List students', () => {
+    it('should retrieve all student', (done) => {
+        return request(app)
+            .get('/api/students/list-student')
+            .set('Authorization', `${process.env.ACCESS_TOKEN}`)
+            .expect(200)
+            .end((err, res) => {
+                if (err) {
+                    return done(err)
+                }
+                done()
+            })
+    })
+})
+
+describe('Search student', () => {
+    it('should retrieve student that matches the search query and filter', (done) => {
+        const name = 'Allan'
+        const Class = 1
+        return request(app)
+            .get(`/api/students/search?name${name}&Class${Class}`)
             .set('Authorization', `${process.env.ACCESS_TOKEN}`)
             .expect(200)
             .end((err, res) => {
@@ -37,11 +68,11 @@ describe('List Student', () => {
 })
 
 
-describe('Get a parent', () => {
-    it('should retrieve a parent', (done) => {
-        const parentId = 1
+describe('Get a student', () => {
+    it('should retrieve a student', (done) => {
+        const studentId = 1
         return request(app)
-            .get(`/api/parents/${parentId}`)
+            .get(`/api/students/${studentId}`)
             .set('Authorization', `${process.env.ACCESS_TOKEN}`)
             .expect(200)
             .end((err, res) => {

@@ -1,4 +1,4 @@
-# Note-API
+# School-Mangement-API
 This is a School-Mangement API built with Nodejs + express js
 
 # Pre-requisites

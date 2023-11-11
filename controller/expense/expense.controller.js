@@ -4,7 +4,7 @@ const { SuccessResponse } = require('../../middleware/succesHandler')
 
 class Expense {
 
-    // Add a new Expense
+    // Create a new Expense
     static async addExpense(req, res) {
         try {
             const { name, expenseType, status, amount, phone, email, dueDate } = req.body
@@ -19,7 +19,7 @@ class Expense {
         }
     }
 
-    //Return a List of Expenses
+    //Retrieve all Expenses
     static async listExpense(req, res) {
         try {
             const expenses = await service.expenseService.listExpense()

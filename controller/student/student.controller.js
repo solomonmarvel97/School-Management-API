@@ -5,7 +5,7 @@ const cloudinary = require('cloudinary').v2
 
 class Student {
 
-    // Add a new Student 
+    // Create a new Student 
     static async addStudent(req, res) {
         try {
             const { name, gender, Class, dateOfBirth, bloodGroup, studentReligion, addmissionDate,
@@ -28,7 +28,7 @@ class Student {
         }
     }
 
-    //Return a List of Student
+    //Retrieve all Student
     static async listStudent(req, res) {
         try {
             const student = await service.studentService.listStudent()
@@ -94,7 +94,7 @@ class Student {
         }
     }
 
-    //Return a list of student fees
+    //Retrieve all student fees
     static async listStudentFee(req, res) {
         try {
             const student = await service.feesService.listStudentFee()
@@ -123,7 +123,7 @@ class Student {
         }
     }
 
-    //Return a List of feeGroup
+    //Retrieve all feeGroup
     static async listFeeGroup(req, res) {
         try {
             const feeGroup = await service.feesgroupService.listFeesGroup()

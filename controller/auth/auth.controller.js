@@ -49,24 +49,6 @@ class Auth {
         }
 
     }
-
-    //forgot password 
-    static async forgotPassord(req, res){
-        try{
-
-        }catch(err){
-
-        }
-    }
-
-    //update admin password 
-    static async updatePassword(req, res){
-        try{
-
-        }catch(err){
-
-        }
-    }
 }
 
 module.exports = { Auth }

@@ -4,7 +4,7 @@ const { SuccessResponse } = require('../../middleware/succesHandler')
 
 class Parent {
 
-    //Return a List of Parent
+    //Retrieve all  Parent
     static async listParent(req, res) {
         try {
             const parent = await service.parentService.listParent()

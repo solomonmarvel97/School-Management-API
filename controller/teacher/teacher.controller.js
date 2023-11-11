@@ -5,7 +5,7 @@ const cloudinary = require('cloudinary').v2
 
 class Teacher {
 
-    // Add a new teacher 
+    // Create a new teacher 
     static async addTeacher(req, res) {
         try {
             const { fisrtname, lastname, gender, dateOfBirth , bloodGroup, religion, email , phone ,Class, subject, address,  startDate } = req.body
@@ -26,7 +26,7 @@ class Teacher {
         }
     }
 
-    //Return a list of teachers
+    //Retrieve  all teachers
     static async listTeacher(req, res) {
         try {
             const teacher = await service.teacherService.listTeacher()
@@ -75,7 +75,7 @@ class Teacher {
         }
     }
 
-    //Add a new subject
+    //Create a new subject
     static async addSubject(req, res){
         try{
             const { name, teacher, Classes, days } = req.body
@@ -90,7 +90,7 @@ class Teacher {
         }
     }
 
-    //Return a List of Subject
+    //Retrieve all Subject
     static async listSubject(req, res){
         try{
             const subject = await service.subjectService.listSubject()
