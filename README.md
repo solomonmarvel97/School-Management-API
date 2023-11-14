@@ -7,11 +7,11 @@ This is a School-Mangement API built with Nodejs + express js
 # Getting Started
 - clone the repository
 
-  ` git clone <https://github.com/HilaryEmmanuel/ School-Mangement-API.git> `
+  ` git clone <https://github.com/HilaryEmmanuel/School-Management-API.git> `
 
 - Install dependencies
   
-  ` cd <School-Mangement-Api> `
+  ` cd <School-Management-Api> `
   ` npm install `
 
 - Build and run the project
@@ -27,7 +27,6 @@ This is a School-Mangement API built with Nodejs + express js
 - sequelize - the Orm used
 - supertest & mocha - packages used for testing
 - jsonwebtoken - the package used  for creation and verification of jwt token
-- nodemailer - the package used to send emails
 - cloudinary - the cloud storage used for file upload
 
 

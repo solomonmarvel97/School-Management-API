@@ -44,7 +44,7 @@ class Student {
 
     }
 
-    //Get a Particular Parent
+    //Get a Particular Student
     static async getStudent(req, res) {
         try {
             const studentId = req.params.id
