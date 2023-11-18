@@ -1,6 +1,5 @@
 const app = require('../app')
 const request = require('supertest')
-require('dotenv').config()
 
 describe('List parent', () => {
     it('should retrieve all parent', (done) => {

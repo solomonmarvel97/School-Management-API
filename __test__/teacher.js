@@ -1,13 +1,13 @@
 const app = require('../app')
 const request = require('supertest')
-require('dotenv').config()
 
 describe('Add teacher', () => {
     it('should create a new teacher', (done) => {
         return request(app)
             .post('/api/teachers')
             .set('Authorization', '')
-            .send({ fisrtname : 'John', lastname : 'Timothy', gender :'Male', dateOfBirth : '200-05-04' , bloodGroup : 'o+', religion : 'Islam', email :'tm10@gmail.com' , phone : '9078654431' , Class :'1', subject :'Maths', address : '10 Onokoyo street Accra',  startDate : '2020-11-05', imageUrl : ''})
+            .send({ fisrtname : 'John', lastname : 'Timothy', gender :'Male', dateOfBirth : '200-05-04' , bloodGroup : 'o+', religion : 'Islam', email :'tm10@gmail.com' , phone : '9078654431' , Class :'1', subject :'Maths', address : '10 Onokoyo street Accra',  startDate : '2020-11-05'})
+            .attach('imageUrl', '__test__\images\code.png')
             .expect(201)
             .end((err, res) => {
                 if (err) {

@@ -1,13 +1,13 @@
 const app = require('../app')
 const request = require('supertest')
-require('dotenv').config()
 
 describe('Add profile', () => {
     it('should add or create a profile', (done) => {
         return request(app)
             .post('/api/profiles')
             .set('Authorization', '')
-            .send({ profileImage: '__test__\images\code.png', coverImage: '__test__\images\code.png', schoolName: 'Firm Foundation', email: 'quansah10@gmail.com', phone: 9087654321, city: 'Accra', address: '24 Avla Accra ', languages: 'English', adminId: 2 })
+            .send({schoolName: 'Firm Foundation', email: 'quansah10@gmail.com', phone: 9087654321, city: 'Accra', address: '24 Avla Accra ', languages: 'English', adminId: 2 })
+            .attach(' profileImage', '__test__\images\code.png', ' coverImage: ', '__test__\images\code.png')
             .expect(201)
             .end((err, res) => {
                 if (err) {

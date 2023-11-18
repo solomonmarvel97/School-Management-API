@@ -1,6 +1,5 @@
 const app = require('../app')
 const request = require('supertest')
-require('dotenv').config()
 
 
 describe('Add or create an expense', () => {

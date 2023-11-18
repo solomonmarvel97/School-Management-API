@@ -1,6 +1,5 @@
 const app = require('../app')
 const request = require('supertest')
-require('dotenv').config()
 
 describe('List fees', () => {
     it('should retrieve all fees', (done) => {

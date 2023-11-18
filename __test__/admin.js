@@ -1,6 +1,5 @@
 const app = require('../app')
 const request = require('supertest')
-require('dotenv').config()
 
 describe('Admin dashboard', () => {
     it('should respond with student  teacher and parent count', (done) => {

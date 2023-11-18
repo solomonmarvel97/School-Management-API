@@ -1,7 +1,6 @@
 const express = require('express')
 const router = express.Router()
 const controller = require('../controller/index')
-const utils = require('../utils/index')
 const middleware = require('../middleware/authJwt')
 const { storage } = require('../config/cloudinary')
 const multer = require('multer')

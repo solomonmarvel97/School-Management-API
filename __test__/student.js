@@ -1,14 +1,16 @@
 const app = require('../app')
 const request = require('supertest')
-require('dotenv').config()
 
 describe('Add Student and parent', () => {
     it('should create new  student and parent', (done) => {
         return request(app)
             .post('/api/parents/list-parent')
             .set('Authorization', '')
-            .send({ name : '', gender :'', Class : '', dateOfBirth : '', bloodGroup : '', studentReligion : '', addmissionDate : '',
-                fatherName : '', motherName : '', email : '', phone : '', fathersOccupation:'', address : '', parentReligion : ''})
+            .send({
+                name: '', gender: '', Class: '', dateOfBirth: '', bloodGroup: '', studentReligion: '', addmissionDate: '',
+                fatherName: '', motherName: '', email: '', phone: '', fathersOccupation: '', address: '', parentReligion: ''
+            })
+            .attach(' studentImage', '__test__\images\code.png')
             .expect(201)
             .end((err, res) => {
                 if (err) {
@@ -24,7 +26,7 @@ describe('Promote Student', () => {
         return request(app)
             .get('/api/students/promote')
             .set('Authorization', '')
-            .send({name:'Allan', currentClass : 1, promotionFromClass : 1, promotionToClass : 2})
+            .send({ name: 'Allan', currentClass: 1, promotionFromClass: 1, promotionToClass: 2 })
             .expect(201)
             .end((err, res) => {
                 if (err) {

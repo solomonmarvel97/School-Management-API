@@ -1,6 +1,5 @@
 const app = require('../app')
 const request = require('supertest')
-require('dotenv').config()
 
 describe('Add subject', () => {
     it('should create a new subject', (done) => {
