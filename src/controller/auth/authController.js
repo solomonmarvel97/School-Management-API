@@ -7,7 +7,7 @@ const { AdminService } = require('../../service/admin.service')
 const TokenService = require('../../service/token.service')
 const { Token } = require('../../utils/generateTokens')
 
-class Auth {
+class AuthController {
     static async login(req, res) {
         try {
             const { username, password } = req.body
@@ -32,7 +32,7 @@ class Auth {
     //Verify refresh token and generate new access token
     static async refreshVerifyToken(req, res) {
         try {
-            const refreshtoken = req.cookies?.refreshToken
+            const refreshToken = req.cookies?.refreshToken
             const decode = jwt.verify(refreshToken, process.env.JWT_SECRET)
             const userId = decode.id
             const findUser = await AdminService.findById(userId)
@@ -40,12 +40,12 @@ class Auth {
                 return respond(res, 403, 'Refresh token does not exist ')
             }
             //refresh token rotation is implemented
-            const accessToken = Token.generateAcessToken({ id: findUser.id })
-            const refreshToken = Token.generateAcessToken({ id: findUser.id })
-            await TokenService.deleteRefreshToken(userId)
-            res.clearCookie('refreshToken', refreshtoken, { httpOnly: true, secure: true })
-            res.cookie('refreshToken', refreshToken, { httpOnly: true, secure: true, maxAge: 2 * 24 * 60 * 60 * 1000 }) // 2 days
-            return respond(res, 200, 'Access token generated successfully', { access_token: accessToken, token_type: 'bearer', expires_in: 86400000 })
+            await TokenService.deleteRefreshToken(findUser.id)
+            const newAccessToken = Token.generateAcessToken({ id: findUser.id })
+            const newRefreshToken = Token.generateRefreshToken({ id: findUser.id })
+            res.clearCookie('refreshToken', newRefreshToken, { httpOnly: true, secure: true })
+            res.cookie('refreshToken', newRefreshToken, { httpOnly: true, secure: true, maxAge: 2 * 24 * 60 * 60 * 1000 }) // 2 days
+            return respond(res, 200, 'Access token generated successfully', { access_token: newAccessToken, token_type: 'bearer', expires_in: 86400000 })
         } catch (err) {
             logger.error(`Failed to generate access token ${err}`)
             return respond(res, 500, 'Failed to generate access token')
@@ -54,4 +54,4 @@ class Auth {
     }
 }
 
-module.exports = { Auth }
+module.exports = { AuthController }

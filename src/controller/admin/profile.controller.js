@@ -49,7 +49,7 @@ class ProfileController {
             }
             return respond(res, 200, 'Profile successfully updated')
         } catch (err) {
-            logger.error(`Error updating profile ${err}`)
+            logger.error(`Failed to update profile ${err}`)
             return respond(res, 500, 'Error updating profile')
         }
     }

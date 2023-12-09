@@ -1,2 +1,7 @@
 {"level":"error","message":"Failed to retrieve expense TypeError: Expense.findAlll is not a function"}
 {"level":"error","message":"Failed to retrieve expense Error: Failed to retrieve expense"}
+{"level":"error","message":"Failed to generate access token ReferenceError: Cannot access 'refreshToken' before initialization"}
+{"level":"error","message":"Failed to generate access token ReferenceError: Cannot access 'refreshToken' before initialization"}
+{"level":"error","message":"Failed to delete refresh token SequelizeDatabaseError: invalid input syntax for type bigint: \"[object SequelizeInstance:admin]\""}
+{"level":"error","message":"Failed to delete refresh token SequelizeDatabaseError: invalid input syntax for type bigint: \"[object Promise]\""}
+{"level":"error","message":"Failed to generate access token Error: Failed to delete refresh token"}

@@ -1,11 +1,11 @@
 const express = require('express')
 const router = express.Router()
-const utils = require('../utils/index')
 const { Authorize } = require('../utils/authJwt')
-const { Auth } = require('../controller/auth/authController')
+const { AuthController } = require('../controller/auth/authController')
+const { Validation } = require('../utils/validation')
 
-router.post('/login', utils.validation.loginValidation, utils.validation.check , Auth.login)
+router.post('/login', Validation.loginValidation, Validation.check , AuthController.login)
 
-router.post('/refreshtoken', Authorize.verifyRefreshToken, Auth.refreshVerifyToken)
+router.post('/refreshtoken', Authorize.verifyRefreshToken, AuthController.refreshVerifyToken)
 
 module.exports = router

@@ -13,7 +13,7 @@ class Authorize {
             }
             return respond(res, 401, 'Unauthorized!')
         } catch (err) {
-            logger.error(`Error Validating access token Error: ${err}`)
+            logger.error(`Failed in validating access token ${err}`)
             return respond(res, 500, 'Internal server error')
         }
     }
@@ -25,7 +25,7 @@ class Authorize {
             }
             return respond(res, 404, 'Refresh token does not exist')
         } catch (err) {
-            logger.error(`Error validating refresh token Error: ${err}`)
+            logger.error(`Failed in validating refresh token ${err}`)
             return respond(res, 500, 'Internal server error')
         }
     }

@@ -11,7 +11,7 @@ class Token {
         const accessToken = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '1d', algorithm: "HS256" })
         return accessToken
     } catch (err) {
-        logger.error(`Error generating access token Error: ${err}`)
+        logger.error(`Error generating access token ${err}`)
         throw new Error('Failed to generate access token')
     }
 }
@@ -24,7 +24,7 @@ class Token {
             const refreshToken = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '1d', algorithm: "HS256" })
             return refreshToken
         } catch (err) {
-            logger.error(`Error generating refresh token Error: ${err}`)
+            logger.error(`Error generating refresh token ${err}`)
             throw new Error('Failed to generate refresh token')
         }
     }

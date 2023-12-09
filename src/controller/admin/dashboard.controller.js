@@ -17,7 +17,7 @@ class AdminDashboard {
             }
             return respond(res, 200, 'Data successfully retrieved', { studentCount, teachersCount, parentCount })
         } catch (err) {
-            logger.error(`Error retrieving data ${err}`)
+            logger.error(`Failed to retrieve data ${err}`)
             return respond(res, 500, 'Internal server error')
         }
     }
