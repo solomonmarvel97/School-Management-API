@@ -5,36 +5,37 @@ var logger = require('morgan');
 var cors = require('cors')
 var helmet = require('helmet')
 
-var baseRouter = require('./routes/index');
-var authRouter = require('./routes/auth')
-var parentRouter = require('./routes/parent')
-var studentRouter = require('./routes/student')
-var subjectRouter = require('./routes/subject')
-var teacherRouter = require('./routes/teacher')
-var adminRouter = require('./routes/admin')
-var profileRouter = require('./routes/profile')
-var feesRouter = require('./routes/fees')
-var expenseRouter = require('./routes/expense')
+var authRouter = require('./src/routes/auth')
+var parentRouter = require('./src/routes/parent')
+var studentRouter = require('./src/routes/student')
+var subjectRouter = require('./src/routes/subject')
+var teacherRouter = require('./src/routes/teacher')
+var adminRouter = require('./src/routes/admin')
+var profileRouter = require('./src/routes/profile')
+var feesRouter = require('./src/routes/fees')
+var expenseRouter = require('./src/routes/expense')
+var { respond } = require('./src/utils/respond')
 
 
-var { dbConnection } = require('./config/db.config')
+
+var { dbConnection } = require('./src/config/database');
+const { syncModel } = require('./src/model');
 
 
 //database Connection
-async function databaseConection(){
-  try{
+async function databaseConection() {
+  try {
     await dbConnection.authenticate()
+    await Promise.all(syncModel.map(async (model) => await model.sync()))
     console.log('database connection was established succesfully')
-  }catch(err){
+  }catch (err) {
     console.log('connection was not established an error occured ', err)
+  
+  } 
   }
 
-}
 databaseConection()
 
-//sync models
-const models = require('./model/index')
-models.db
 
 var app = express();
 
@@ -55,22 +56,28 @@ app.use(cors(options))
 // use helmet middleware
 app.use(helmet())
 
-app.use('/', baseRouter, authRouter, parentRouter, studentRouter, subjectRouter, teacherRouter, adminRouter, profileRouter, feesRouter, expenseRouter);
 
+app.get('/', (req, res) => {
+  respond(res, 200, 'School management API is running')
+})
+
+app.use('/api', authRouter, parentRouter, studentRouter, subjectRouter, teacherRouter, adminRouter, profileRouter, feesRouter, expenseRouter);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  next(createError(404, 'route does not exist'));
+app.use(function (req, res, next) {
+  next(createError(404, 'endpoint does not exist'));
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
+  res.locals.error = req.app.get('env') === 'development' ? err  : {};
 
   res.status(err.status || 500);
   res.json(err);
 });
+
+
 
 module.exports = app;
