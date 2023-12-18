@@ -6,11 +6,11 @@ const { Authorize } = require('../utils/authJwt')
 const { ProfileController } = require('../controller/admin/profile.controller')
 const upload = multer({ storage })
 
-router.post('/api/profiles', Authorize.verifyAccessToken,  upload.fields([{ name : 'coverImage', maxCount : 1 }, { name : 'profileImage', maxCount : 1 }]) , ProfileController.addProfile)
+router.post('/profiles', Authorize.verifyAccessToken,  upload.fields([{ name : 'coverImage', maxCount : 1 }, { name : 'profileImage', maxCount : 1 }]) , ProfileController.addProfile)
 
-router.get('/api/profiles/view-profile', Authorize.verifyAccessToken, ProfileController.viewProfile)
+router.get('/profiles/view-profile', Authorize.verifyAccessToken, ProfileController.viewProfile)
 
-router.patch('/api/profiles/update-profile', Authorize.verifyAccessToken, ProfileController.updateProfile)
+router.patch('/profiles/update-profile', Authorize.verifyAccessToken, ProfileController.updateProfile)
 
 
 module.exports = router
