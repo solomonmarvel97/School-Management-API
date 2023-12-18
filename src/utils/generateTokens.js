@@ -21,7 +21,7 @@ class Token {
             if(!payload){
                 throw new Error('Invalid user data for token generation')
             }
-            const refreshToken = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '1d', algorithm: "HS256" })
+            const refreshToken = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '5d', algorithm: "HS256" })
             return refreshToken
         } catch (err) {
             logger.error(`Failed to generate refresh token ${err}`)
