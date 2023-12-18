@@ -60,6 +60,8 @@ Parent.init({
     createdAt : true,
     updatedAt : true
 })
+sequelize.sync()
+
 Parent.hasMany(Student, { foreignKey : 'id' , onDelete : 'CASCADE'})
 
 Student.belongsTo(Parent, { foreignKey : 'id' , onDelete : "CASCADE"})

@@ -35,6 +35,9 @@ Token.init({
     updatedAt: true
 })
 
+sequelize.sync()
+
 Admin.hasOne(Token, { foreignKey: 'id', onDelete: 'CASCADE' })
 Token.belongsTo(Admin, { foreignKey: 'id', onDelete: 'CSACDAE' })
+
 module.exports = { Token }

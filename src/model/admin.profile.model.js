@@ -66,7 +66,7 @@ AdminProfile.init({
     }
 }, {
     sequelize,
-    modelName : 'adminprofile',
+    modelName : 'admin_profile',
     createdAt : true,
     updatedAt : true
 })

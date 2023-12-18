@@ -32,5 +32,6 @@ Admin.hasOne(AdminProfile, { onDelete : 'CASCADE'})
 
 AdminProfile.belongsTo(Admin, { onDelete : 'CASCADE'})
 
+sequelize.sync()
 // Admin.create({username : 'prince Afful Quansah', password : bcrypt.hashSync('admin', 8)})
 module.exports = { Admin }
