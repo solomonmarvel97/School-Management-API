@@ -85,8 +85,9 @@ class StudentController {
             if (!student) {
                 return respond(res, 409, 'Student not promoted')
             }
-            return respond(res, 201, 'Student promoted successfully', { student })
+            return respond(res, 200, 'Student promoted successfully', { student })
         } catch (err) {
+            console.error(err)
             logger.error(`Failed to promote student ${err}`)
             return respond(res, 500, 'Internal server error')
         }

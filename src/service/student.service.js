@@ -80,6 +80,7 @@ class StudentService {
             const resultSet2 = await Student.findOne({ where: { name: name } })
             return resultSet2
         } catch (err) {
+            console.error(err)
             logger.error(`Failed to update student ${err}`)
             throw new Error('Failed to update student')
         }
