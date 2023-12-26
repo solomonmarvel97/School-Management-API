@@ -40,6 +40,7 @@ class SubjectService {
             })
             return resultSet
         } catch (err) {
+            console.error(err)
             logger.error(`Failed to retrieve subject ${err}`)
             throw new Error('Failed to retrieve subject')
         }
