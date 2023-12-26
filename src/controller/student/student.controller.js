@@ -88,7 +88,6 @@ class StudentController {
             }
             return respond(res, 200, 'Student promoted successfully', { student })
         } catch (err) {
-            console.error(err)
             logger.error(`Failed to promote student ${err}`)
             return respond(res, 500, 'Internal server error')
         }

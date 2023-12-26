@@ -81,7 +81,6 @@ class TeacherController {
             }
             return respond(res, 200, 'Subject created successfully', { subject })
         } catch (err) {
-            console.error(err)
             logger.error(`Failed to create a new subject ${err}`)
             return respond(res, 500, 'Internal server error')
         }
@@ -111,7 +110,6 @@ class TeacherController {
             }
             return respond(res, 200, 'Subject retrieved successfully', { search })
         } catch (err) {
-            console.error(err)
             logger.error(`Failed to retrieve subject ${err}`)
             return respond(res, 500, 'Internal server error')
         }

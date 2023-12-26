@@ -79,7 +79,6 @@ class StudentService {
             const resultSet = await Student.findOne({ where: { id: studentId } })
             return resultSet
         } catch (err) {
-            console.error(err)
             logger.error(`Failed to update student ${err}`)
             throw new Error('Failed to update student')
         }

@@ -19,8 +19,9 @@ class AuthController {
             const accessToken = Token.generateAcessToken({ id: user.id })
             const refreshToken = Token.generateRefreshToken({ id: user.id })
             await TokenService.createRefreshToken(refreshToken)
+            //clear refreshToken if any is found
             res.clearCookie('refreshToken', refreshToken, { httOnly: true, secure: true })
-            //Creates secure cookie with refresh token
+            //Create refreshToken cookie
             res.cookie('refreshToken', refreshToken, { httpOnly: true, secure: true, maxAge: 2 * 24 * 60 * 60 * 1000 }) // 2 days
             return respond(res, 200, ' Login successfull', { access_token: accessToken, token_type: 'bearer', expires_in: 86400000, user })
         } catch (err) {
