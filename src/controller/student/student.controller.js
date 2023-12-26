@@ -147,6 +147,7 @@ class StudentController {
             }
             return respond(res, 200, 'FeeGroup retrieved successfully', { fee_group: feeGroup})
         } catch (err) {
+            console.error(err)
             logger.error(`Failed to retrieve feeGroup ${err}`)
             return respond(res, 500, 'Internal server error')
         }
