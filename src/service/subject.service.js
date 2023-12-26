@@ -11,6 +11,7 @@ class SubjectService {
             const resultSet = await Subject.create({ subject: subject, teacher: teacher, Classes: Classes, days: days })
             return resultSet
         } catch (err) {
+            console.error(err)
             logger.error(`Failed to create a new subject ${err}`)
             throw new Error('Failed to create a new subject')
         }
