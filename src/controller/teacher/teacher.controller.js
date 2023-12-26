@@ -66,6 +66,7 @@ class TeacherController {
             }
             return respond(res, 200, 'Teacher retrieved successfully', { teacher })
         } catch (err) {
+            console.error(err)
             logger.error(`Failed to retrieve teacher ${err}`)
             return respond(res, 500, 'Internal server error')
         }
@@ -104,7 +105,7 @@ class TeacherController {
     static async searchSubject(req, res) {
         try {
             const { subject, Classes } = req.query
-            const search = await SubjectService.searchSubject(subject, Classes)
+            const search = await SubjectService(subject, Classes)
             if (!search) {
                 return respond(res, 404, 'Subject not found')
             }
