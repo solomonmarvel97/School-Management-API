@@ -10,3 +10,12 @@
 {"level":"error","message":"Failed log in attempt TypeError: Cannot read properties of null (reading 'password')"}
 {"level":"error","message":"Failed to retrieve profile ReferenceError: db is not defined"}
 {"level":"error","message":"Failed to retrieve profile Error: Failed to retrieve profile"}
+{"level":"error","message":"Failed to create refresh token SequelizeForeignKeyConstraintError: insert or update on table \"tokens\" violates foreign key constraint \"tokens_id_fkey\""}
+{"level":"error","message":"Failed log in attempt Error: Failed to create refresh token"}
+{"level":"error","message":"Failed to create refresh token SequelizeForeignKeyConstraintError: insert or update on table \"tokens\" violates foreign key constraint \"tokens_id_fkey\""}
+{"level":"error","message":"Failed log in attempt Error: Failed to create refresh token"}
+{"level":"error","message":"Failed to create refresh token SequelizeForeignKeyConstraintError: insert or update on table \"tokens\" violates foreign key constraint \"tokens_id_fkey\""}
+{"level":"error","message":"Failed log in attempt Error: Failed to create refresh token"}
+{"level":"error","message":"Failed to retrieve admin SequelizeConnectionError: read ECONNRESET"}
+{"level":"error","message":"Failed log in attempt Error: Failed to retrieve admin"}
+{"level":"error","message":"Failed log in attempt TypeError: Cannot read properties of null (reading 'password')"}
