@@ -75,7 +75,7 @@ class StudentService {
             if (!name) {
                 throw new Error('All argument are required!')
             }
-            const resultSet1 = await StudentPromotion.findOne({ where: { name: name } })
+            const resultSet1 = await Student.findOne({ where: { name: name } })
             await Student.update({ Class: resultSet1.promotionToClass }, { where: { Class: resultSet1.Class } })
             const resultSet2 = await Student.findOne({ where: { name: name } })
             return resultSet2
