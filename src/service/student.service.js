@@ -70,15 +70,14 @@ class StudentService {
     }
 
 
-    static async updateStudent(name) {
+    static async updateStudent(studentId, Class) {
         try {
-            if (!name) {
+            if (!studentId) {
                 throw new Error('All argument are required!')
             }
-            const resultSet1 = await Student.findOne({ where: { name: name } })
-            await Student.update({ Class: resultSet1.promotionToClass }, { where: { Class: resultSet1.Class } })
-            const resultSet2 = await Student.findOne({ where: { name: name } })
-            return resultSet2
+            await Student.update({ Class: Class }, { where: { id: studentId } })
+            const resultSet = await Student.findOne({ where: { id: studentId } })
+            return resultSet
         } catch (err) {
             console.error(err)
             logger.error(`Failed to update student ${err}`)

@@ -80,8 +80,9 @@ class StudentController {
     static async promoteStudent(req, res) {
         try {
             const { name, currentClass, promotionFromClass, promotionToClass } = req.body
+            const studentId = req.params.id
             const student = await PromotionService.promoteStudent(name, currentClass, promotionFromClass, promotionToClass)
-            await StudentService.updateStudent(name)
+            await StudentService.updateStudent(studentId, promotionToClass )
             if (!student) {
                 return respond(res, 409, 'Student not promoted')
             }

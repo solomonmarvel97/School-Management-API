@@ -9,7 +9,7 @@ const upload = multer({ storage })
 
 router.post('/students', Authorize.verifyAccessToken, upload.fields([{ name : 'studentImage', maxCount : 1}]), StudentController.addStudent )
 
-router.post('/students/promote', Validation.promotionValidation, Validation.check,  Authorize.verifyAccessToken, StudentController.promoteStudent)
+router.post('/students/promote/:id', Validation.promotionValidation, Validation.check,  Authorize.verifyAccessToken, StudentController.promoteStudent)
 
 router.get('/students/list-student', Authorize.verifyAccessToken, StudentController.listStudent)
 
