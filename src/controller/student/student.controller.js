@@ -101,7 +101,7 @@ class StudentController {
             if (!student) {
                 return respond(res, 409, 'Fees not retrieved')
             }
-            return respond(res, 409, 'Fees retrieved successfully', { student })
+            return respond(res, 200, 'Fees retrieved successfully', { student })
         } catch (err) {
             logger.error(`Failed to retrieve student fees ${err}`)
             return respond(res, 500, 'Internal server error')
