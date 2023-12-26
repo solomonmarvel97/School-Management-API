@@ -1,6 +1,6 @@
 const { uploadToCloudinary } = require("../../config/cloudinary")
 const { logger } = require("../../config/logger")
-const SubjectService = require("../../service/subject.service")
+const { SubjectService } = require("../../service/subject.service")
 const { TeacherService } = require("../../service/teacher.service")
 const { respond } = require("../../utils/respond")
 
