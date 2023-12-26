@@ -65,11 +65,10 @@ AdminProfile.init({
         allowNull : false
     }
 }, {
-    sequelize,
+    sequelize: sequelize,
     modelName : 'admin_profile',
     createdAt : true,
     updatedAt : true
 })
-sequelize.sync()
 
 module.exports = { AdminProfile }

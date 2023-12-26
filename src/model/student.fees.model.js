@@ -56,11 +56,10 @@ StudentFees.init({
         }
     }
 },{
-    sequelize,
+    sequelize: sequelize,
     modelName : 'studentfee',
     createdAt : true,
     updatedAt : true
 })
-sequelize.sync()
 // StudentFees.create({ name : 'Ray', gender : 'Male', Class : 2, amount : 20000.00, status : 'Unpaid', email : 'judeoc@gmail.com', phone : 8132592260})
 module.exports = { StudentFees }

@@ -16,7 +16,7 @@ class ProfileController {
             }
             const uplaodcoverImage = await uploadToCloudinary(coverImage.path, { resource_type: 'auto' })
             const uploadprofileImge = await uploadToCloudinary(profileImage.path, { resource_type: 'auto' })
-            const profile = await service.profileService.createProfile(uplaodcoverImage.secure_url, uploadprofileImge.secure_url, schoolName, email, phone, city, address, languages, req.id)
+            const profile = await ProfileService.createProfile(uplaodcoverImage.secure_url, uploadprofileImge.secure_url, schoolName, email, phone, city, address, languages, req.id)
             if (!profile) {
                 return respond(res, 409, 'Profile not created')
             }
@@ -31,7 +31,7 @@ class ProfileController {
         try {
             const profile = await ProfileService.getProfile(req.id)
             if (!profile) {
-                return respond(res, 409, 'No profile added')
+                return respond(res, 400, 'No profile added')
             }
             return respond(res, 200, 'Profile successfully retrieved', { profile })
         } catch (err) {

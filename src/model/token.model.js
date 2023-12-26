@@ -29,13 +29,12 @@ Token.init({
         allowNull: false
     }
 }, {
-    sequelize,
+    sequelize: sequelize,
     modelName: 'token',
     createdAt: true,
     updatedAt: true
 })
 
-sequelize.sync()
 
 Admin.hasOne(Token, { foreignKey: 'id', onDelete: 'CASCADE' })
 Token.belongsTo(Admin, { foreignKey: 'id', onDelete: 'CSACDAE' })

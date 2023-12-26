@@ -35,11 +35,10 @@ StudentPromotion.init({
 
     }
 }, {
-    sequelize,
+    sequelize: sequelize,
     modelName : 'studentpromotion',
     createdAt : true,
     updatedAt : true
 })
-sequelize.sync()
 
 module.exports = { StudentPromotion }

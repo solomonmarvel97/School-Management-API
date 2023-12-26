@@ -59,11 +59,10 @@ Expense.init({
         }
     }
 }, {
-    sequelize,
+    sequelize: sequelize,
     modelName : 'expense',
     createdAt : true,
     updatedAt : true
 })
-sequelize.sync()
 
 module.exports = { Expense }

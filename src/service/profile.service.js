@@ -1,4 +1,5 @@
 const { logger } = require('../config/logger')
+const { Admin } = require('../model/admin.model')
 const { AdminProfile } = require('../model/admin.profile.model')
 
 class ProfileService {
@@ -21,7 +22,7 @@ class ProfileService {
             if (!id) {
                 throw new Error('All argument are required!')
             }
-            const resultSet = await AdminProfile.findOne({ attributes: ['coverImage', 'profileImage', 'schoolName', 'email', 'phone', 'city', 'address', 'languages'], include: { model: db.adminModel.Admin, attributes: ['username'] }, where: { id: id } })
+            const resultSet = await AdminProfile.findOne({ attributes: ['coverImage', 'profileImage', 'schoolName', 'email', 'phone', 'city', 'address', 'languages'], include: { model: Admin, attributes: ['username'] }, where: { id: id } })
             return resultSet
         } catch (err) {
             logger.error(`Failed to retrieve profile ${err}`)

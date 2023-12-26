@@ -55,12 +55,11 @@ Parent.init({
         allowNull : false
     }
 }, {
-    sequelize,
+    sequelize: sequelize,
     modelName : 'parent',
     createdAt : true,
     updatedAt : true
 })
-sequelize.sync()
 
 Parent.hasMany(Student, { foreignKey : 'id' , onDelete : 'CASCADE'})
 

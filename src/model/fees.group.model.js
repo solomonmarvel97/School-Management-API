@@ -28,11 +28,10 @@ FeesGroup.init({
         allowNull : false
     }
 }, {
-    sequelize,
+    sequelize: sequelize,
     modelName : 'feesgroup',
     createdAt : true,
     updatedAt : true
 })
-sequelize.sync()
 
 module.exports = { FeesGroup }

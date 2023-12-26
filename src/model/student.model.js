@@ -62,11 +62,10 @@ Student.init({
         }
     }
 }, {
-    sequelize,
+    sequelize: sequelize,
     modelName : 'student',
     createdAt : true,
     updatedAt : true
 })
-sequelize.sync()
 
 module.exports = { Student }

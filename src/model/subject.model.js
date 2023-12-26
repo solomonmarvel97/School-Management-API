@@ -33,11 +33,10 @@ Subject.init({
     }
 
 }, {
-    sequelize,
+    sequelize: sequelize,
     modelName : 'subject',
     createdAt : true,
     updatedAt : true
 })
-sequelize.sync()
 
 module.exports = { Subject }
