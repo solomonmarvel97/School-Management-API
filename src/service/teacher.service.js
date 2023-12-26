@@ -62,7 +62,6 @@ class TeacherService {
             })
             return resultSet
         } catch (err) {
-            console.error(err)
             logger.error(`Failed to retrieve teacher ${err}`)
             throw new Error('Failed to retrieve teacher')
 

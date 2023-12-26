@@ -66,7 +66,6 @@ class TeacherController {
             }
             return respond(res, 200, 'Teacher retrieved successfully', { teacher })
         } catch (err) {
-            console.error(err)
             logger.error(`Failed to retrieve teacher ${err}`)
             return respond(res, 500, 'Internal server error')
         }

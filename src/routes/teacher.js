@@ -10,7 +10,7 @@ router.post('/teachers', Authorize.verifyAccessToken , upload.fields([{ name : '
 
 router.get('/teachers/list-teacher', Authorize.verifyAccessToken, TeacherController.listTeacher)
 
-router.get('/teachers/search', Authorize.verifyAccessToken, TeacherController.searchSubject)
+router.get('/teachers/search', Authorize.verifyAccessToken, TeacherController.searchTeacher)
 
 router.get('/teachers/:id',  Authorize.verifyAccessToken, TeacherController.getTeacher)
 
