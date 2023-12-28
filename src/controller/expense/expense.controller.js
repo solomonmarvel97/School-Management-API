@@ -11,7 +11,7 @@ class ExpenseController {
             const { name, expenseType, status, amount, phone, email, dueDate } = req.body
             const newExpense = await ExpenseService.createExpense(name, expenseType, status, amount, phone, email, dueDate)
             if (!newExpense) {
-                return respond(res, 409, "Expense not added")
+                return respond(res, 500, "Failed to add expense")
             }
             return respond(res, 201, 'Expense added successfully', { expense: newExpense })
         } catch (err) {
@@ -24,10 +24,10 @@ class ExpenseController {
     static async listExpense(req, res) {
         try {
             const expenses = await ExpenseService.listExpense()
-            if (!expenses) {
-                return respond(res, 409, 'Expenses not retrieved')
+            if (!expenses || expenses.length===0) {
+                return respond(res, 404, 'No expenses found')
             }
-            return respond(res, 200, 'Expenses retriebed successfully', { expenses })
+            return respond(res, 200, 'Expenses retrieved successfully', { expenses })
         } catch (err) {
             logger.error(`Failed to retrieve expenses ${err}`)
             return respond(res, 500, 'Internal server error')
@@ -42,7 +42,7 @@ class ExpenseController {
             if (!expense) {
                 return respond(res, 404, 'Expense not found')
             }
-            return respond(res, 200, 'Expense successfully retrieved', { expense })
+            return respond(res, 200, 'Expense retrieved successfully', { expense })
         } catch (err) {
             logger.error(`Failed to retrieve expense ${err}`)
             return respond(res, 500, 'Internal server error')

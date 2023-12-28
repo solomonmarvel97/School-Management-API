@@ -9,8 +9,8 @@ class ParentController {
     static async listParent(req, res) {
         try {
             const parent = await ParentService.listParent()
-            if (!parent) {
-                return respond(res, 409, 'Parent not retrieved')
+            if (!parent || parent.length===0) {
+                return respond(res, 404, 'No parents found')
             }
             return respond(res, 200, 'parents successfully retrieved', { parent })
         } catch (err) {

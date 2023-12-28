@@ -12,8 +12,8 @@ class AdminDashboard {
             const studentCount = await StudentService.getStudentCount()
             const teachersCount = await TeacherService.getTeacherCount()
             const parentCount = await ParentService.getParentCount()
-            if (!studentCount && !teachersCount && !parentCount) {
-                return respond(res, 409, 'No data available')
+            if (studentCount===0 && teachersCount===0 && parentCount===0) {
+                return respond(res, 404, 'No data available')
             }
             return respond(res, 200, 'Data successfully retrieved', { studentCount, teachersCount, parentCount })
         } catch (err) {

@@ -18,9 +18,9 @@ class TeacherController {
             const uploadImage = await uploadToCloudinary(image.path, { resource_type: 'auto' })
             const newTeacher = await TeacherService.createTeacher(fisrtname, lastname, gender, dateOfBirth, bloodGroup, religion, email, phone, Class, subject, address, startDate, uploadImage.secure_url)
             if (!newTeacher) {
-                return respond(res, 409, 'Teacher not created')
+                return respond(res, 500, 'Failed to create teacher')
             }
-            return respond(res, 201, 'Teacher successfully created', { teacher: newTeacher })
+            return respond(res, 201, 'Teacher created successfully', { teacher: newTeacher })
         } catch (err) {
             logger.error(`Failed to create a new teacher ${err}`)
             return respond(res, 500, 'Internal server error')
@@ -31,10 +31,10 @@ class TeacherController {
     static async listTeacher(req, res) {
         try {
             const teacher = await TeacherService.listTeacher()
-            if (!teacher) {
-                return respond(res, 409, 'Teacher not retrieved')
+            if (!teacher || teacher.length===0) {
+                return respond(res, 404, 'No teachers found')
             }
-            return respond(res, 200, 'Teacher retrieved successfully', { teacher })
+            return respond(res, 200, 'Teachers retrieved successfully', { teacher })
         } catch (err) {
             logger.error(`Failed to retrieve teachers ${err}`)
             return respond(res, 500, 'Internal server error')
@@ -77,7 +77,7 @@ class TeacherController {
             const { name, teacher, Classes, days } = req.body
             const subject = await SubjectService.createSubject(name, teacher, Classes, days)
             if (!subject) {
-                return respond(res, 409, 'Subject not created')
+                return respond(res, 500, 'Failed to create Subject')
             }
             return respond(res, 200, 'Subject created successfully', { subject })
         } catch (err) {
@@ -90,10 +90,10 @@ class TeacherController {
     static async listSubject(req, res) {
         try {
             const subject = await SubjectService.listSubject()
-            if (!subject) {
-                return respond(res, 409, 'Subject not retrieved')
+            if (!subject || subject.length===0) {
+                return respond(res, 404, 'No subjects found')
             }
-            return respond(res, 409, 'Subject successfully retrieved', { subject })
+            return respond(res, 200, 'Subject retrieved successfully', { subject })
         } catch (err) {
             logger.error(`Failed to retrieve subject ${err}`)
             return respond(res, 500, 'Internal server error')
